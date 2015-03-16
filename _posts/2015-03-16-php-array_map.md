@@ -71,6 +71,7 @@ function returnFileNamesByType ($type) {
 
 注意
 1. `array_map` 闭包中只接受一个或者多个参数，闭包的参数数量和 `array_map` 本身的参数数量必须一致
+
 ```php
 $array1 = ['李凌飞', '他'];
 $array2 = ['是', '需要'];
@@ -88,6 +89,7 @@ print_r (
  */
 ```
 2. `array_map` 如果先在操作 content 的同时操作 key，那么简单借助 `array_keys` 即可
+
 ```php
 $input = ['key' => 'value'];
 array_map(function($key, $value) {
@@ -97,6 +99,7 @@ array_map(function($key, $value) {
 // 'keyvalue'
 ```
 3. 还有一些小的用法很好，比如说有一个数组的 `float`数
+
 ```php
 $floats = [13.12, 12.11, 22.22];
 $integers = array_map('intval', $floats);
