@@ -3,7 +3,7 @@ layout:     post
 title:      八数码 笔记
 date:       2015-03-15 23:58
 summary:    bfs + link list
-categories: ACM 算法
+categories: ACM
 ---
 
 ## 问题

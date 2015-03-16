@@ -25,6 +25,8 @@ github: hans-lizihan
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
 sass:
   style: compressed
 gems:
