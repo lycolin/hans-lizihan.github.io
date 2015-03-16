@@ -96,11 +96,10 @@ array_map(function($key, $value) {
 }, array_keys($input), $input)
 // 'keyvalue'
 ```
-3. 还有一些小的用法很好，比如说有一个数组的 float (同理可以将 `intval` 转化成其他的单参数带返回值函数)
+3. 还有一些小的用法很好，比如说有一个数组的 `float`数
 ```php
 $floats = [13.12, 12.11, 22.22];
 $integers = array_map('intval', $floats);
-
 // $integers = [13, 12, 22];
 ```
 
