@@ -11,6 +11,7 @@
   background: $sidebar-bg
   overflow: hidden
   transition: left .35s $time-function, transform .35s $time-function
+  -webkit-transition: left .35s $time-function, -webkit-transform .35s $time-function
   -webkit-user-select: none
   -moz-user-select: none
   user-select: none
@@ -50,6 +51,7 @@
   color: $social-icon-color
   outline: none
   transition: color .15s linear
+  -webkit-transition: color .15s linear
   &:hover
     color: $social-icon-hover-color
 
@@ -86,6 +88,7 @@
   color: $tag-color
   border-bottom: 1px solid $tag-border-color
   transition: color .15s linear, box-shadow .3s $time-function
+  -webkit-transition: color .15s linear, box-shadow .3s $time-function
   cursor: pointer
   &:hover
     color: $tag-hover-color
@@ -179,6 +182,7 @@
     font-size: $toc-bullet-size
     color: $toc-bullet-unread
     transition: transform .15s linear
+    -webkit-transition: -webkit-transform .15s linear
   &:visited:before
     color: $toc-bullet-read
   &:hover:before
