@@ -1,0 +1,31 @@
+# Site settings
+title: 瀚爷的小窝
+email: lizihan0328@gmail.com
+description: 技术渣成长日记
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://hans-lizihan.com" # the base hostname & protocol for your site
+
+
+# Sidebar filter
+# Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category'
+
+
+# Social account
+# twitter:  username
+# weibo:    ID
+github: hans-lizihan 
+# codepen:  username
+# dribbble: username
+
+
+# Comment
+# disqus_shortname:
+
+
+# Build settings
+markdown: kramdown
+sass:
+  style: compressed
+gems:
+  - jekyll-sitemap
