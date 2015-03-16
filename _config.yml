@@ -14,13 +14,13 @@ filter: 'category'
 # Social account
 # twitter:  username
 # weibo:    ID
-github: hans-lizihan 
+github: hans-lizihan
 # codepen:  username
 # dribbble: username
 
 
 # Comment
-# disqus_shortname:
+disqus_shortname: hanslizihancom
 
 
 # Build settings

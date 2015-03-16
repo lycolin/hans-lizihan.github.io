@@ -9,6 +9,29 @@
   > h1
     margin: 0 0 .75em
 
-// Home Page
-// #home
-//   text-align: center
+%default-page
+  padding-top: 50px
+  
+  h1,h2,h3
+    line-height: 1.5
+    margin: 0
+
+  p
+    line-height: 1.5
+
+  ul
+    list-style: none
+    padding: 0
+    li
+      padding-bottom: 15px
+
+  a:active, a:visited
+    text-decoration: none
+    color: black
+  a:hover, a:link
+    text-decoration: underline
+
+// static pages
+.content
+  @extend %default-page
+  min-height: 100%
