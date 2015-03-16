@@ -31,7 +31,7 @@ $(function() {
 
 
   // NProgress
-  NProgress.configure({ showSpinner: false });
+  NProgress.configure({ showSpinner: true});
 
 
   // Pjax
