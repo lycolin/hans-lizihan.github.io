@@ -17,15 +17,16 @@ filter: 'category'
 github: hans-lizihan
 # codepen:  username
 # dribbble: username
-
+google_analytics: UA-54903520-2
 
 # Comment
 disqus_shortname: hanslizihancom
 
+highlighter: pygments
 
 # Build settings
-markdown: kramdown
-kramdown:
+markdown: redcarpet
+redcarpet:
   input: GFM
 sass:
   style: compressed

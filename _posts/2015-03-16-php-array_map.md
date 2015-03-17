@@ -15,7 +15,8 @@ PHP 中数组的高级函数可以优雅地解决不少问题 可惜 php.net 上
 
 假设我们现在有一个文件名的数组
 
-```php
+``` php
+<?php
 $filenames = [
     'man',
     'woman',
@@ -27,7 +28,8 @@ $filenames = [
 
 假设现在的任务是读取 .json, 那么最本能地
 
-```php
+``` php
+<?php
 function jsonFileNames() {
     $result = [];
 
@@ -45,7 +47,8 @@ function jsonFileNames() {
 
 > 生命诚可贵，爱情价更高，若为装逼故，二者皆可抛
 
-```php
+``` php
+<?php
 function jsonFileNames() {
 
     return array_map(function($file) {
@@ -59,7 +62,8 @@ function jsonFileNames() {
 
 更进一步:
 
-```php
+``` php
+<?php
 function returnFileNamesByType ($type) {
 
     return array_map(function($file) use ($type) {
@@ -73,7 +77,8 @@ function returnFileNamesByType ($type) {
 
 * `array_map` 闭包中只接受一个或者多个参数，闭包的参数数量和 `array_map` 本身的参数数量必须一致
 
-```php
+``` php
+<?php
 $array1 = ['李凌飞', '他'];
 $array2 = ['是', '需要'];
 $array3 = ['单身狗', '女朋友'];
@@ -90,9 +95,10 @@ print_r (
  */
 ```
 
-* `array_map` 如果先在操作 content 的同时操作 key，那么简单借助 `array_keys` 即可
+* `array_map` 如果想在操作 content 的同时操作 key，那么简单借助 `array_keys` 即可
 
-```php
+``` php
+<?php
 $input = ['key' => 'value'];
 array_map(function($key, $value) {
 
@@ -103,7 +109,8 @@ array_map(function($key, $value) {
 
 * 还有一些小的用法很好，比如说有一个数组的 `float`数
 
-```php
+``` php
+<?php
 $floats = [13.12, 12.11, 22.22];
 $integers = array_map('intval', $floats);
 // $integers = [13, 12, 22];
