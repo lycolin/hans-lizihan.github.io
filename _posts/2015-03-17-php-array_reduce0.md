@@ -13,6 +13,7 @@ categories: javascript
 相对来讲数组高级函数不光可以大大降低代码的行数 还可以非常良好地支持 javascript 中 chaining 的语法 并且支持 javascript 异步编程的精髓
 
 `Array.prototype.forEach` 实现
+
 ``` javascript
 Array.prototype.forEach = function(callback) {
     for(var i = 0; i < this.length; i ++) {
