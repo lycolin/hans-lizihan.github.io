@@ -22,6 +22,7 @@ Array.prototype.forEach = function(callback) {
 ```
 
 `forEach` 实际用法
+
 ``` javascript
 var test = [1,2,3,4,5];
 
