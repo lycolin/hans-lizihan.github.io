@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      array_map
+title:      php 数组高级函数
 date:       2015-03-16 19:28
-summary:    php 函数 array_map
+summary:    php 高级函数
 categories: PHP
 ---
 
@@ -46,6 +46,8 @@ function jsonFileNames() {
 俗话说的好
 
 > 生命诚可贵，爱情价更高，若为装逼故，二者皆可抛
+
+# `array_map`
 
 ``` php
 <?php
@@ -114,6 +116,81 @@ array_map(function($key, $value) {
 $floats = [13.12, 12.11, 22.22];
 $integers = array_map('intval', $floats);
 // $integers = [13, 12, 22];
+```
+
+类似于 `array_map`, `array_reduce` 作为另外一个 数组高级函数，也可以非常优雅地解决一些问题
+
+# `array_reduce`
+
+`array_reduce` 最典型的 usecase 是 计算 数组中的和
+
+``` php
+<?php
+$raw = [1,2,3,4,5,];
+array_reduce($raw, function($result, $value) {
+    return $result += $value;
+})
+// 15
+```
+
+很简单，但是比较实用，同样的如果用古典的 `foreach` 就会有一些 `$tmp` 看起来没有那么美好
+
+``` php
+<?php
+$raw = [1,2,3,4,5,];
+
+$sum = 0;
+foreach($raw as $value) {
+    $sum += $value;
+}
+$sum;
+// 15
+```
+相比出现3次 `sum` 这种中间量来说我个人还是更加喜欢 array_reduce 这种简洁的感觉
+
+最后 `array_reduce` 的第三个参数是 $result 的初始值
+
+``` php
+<?php
+$raw = [1,2,3,4,5,];
+
+array_reduce($raw, function($result, $value) {
+    $result[$value] = $value;
+
+    return $result;
+}, []);
+// [1 => 1, 2 => 2, ... 5 => 5]
+```
+借助 `array_reduce` 我有时候还会嵌套一些 `array_filter` 的效果(其实因为太懒了没有改成 `array_filter`)
+
+只要简单加些 `if else ... ` `array_reduce` 就可以华丽变身成很好理解的 `array_filter`, (如果愿意，`array_reduce` 还可以达到 `array_map` 的效果)
+
+这种灵活性让我挺爱用这个函数的，可以无痛将 `array_reduce` 转化成 `foreach` 还避免了中间量的尴尬
+
+# `array_filter`
+
+这个函数最常用的情况是 过滤数组中的 `null`
+
+``` php
+<?php
+$test = [null, null, 1, 2, null];
+
+array_filter($test);
+
+// [2 => 1, 4 => 2];
+```
+
+更加常见的使用是从一个单维数组里面挑出来符合条件的元素
+
+``` php
+<?php
+$test [1,2,3,4,5];
+
+array_filter($test, function($content) {
+    return $content > 3;
+});
+
+// [4,5];
 ```
 
 happy coding, may the code will always be with you~
