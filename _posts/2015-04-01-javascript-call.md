@@ -50,7 +50,7 @@ fun.call(thisArg[, arg1[, arg2[, ...]]])
 
 一般来讲， `call` 有两个作用
 
-1. 子类继承父类时触发父类 constructor
+1 子类继承父类时触发父类 constructor
 
 ``` javascript
 function Product(name, price) {
@@ -83,7 +83,7 @@ var cheese = new Food('feta', 5);
 var fun = new Toy('robot', 40);
 ```
 
-2. 匿名函数触发
+2 匿名函数触发
 
 ``` javascript
 var animals = [
@@ -102,15 +102,16 @@ for (var i = 0; i < animals.length; i++) {
 }
 ```
 
-3. Convert Array like Object to Array
+3 Convert Array like Object to Array
+
 ``` javascript
 function trigger() {
-     var args = Array.prototype.slice.call(arguments);
-     ...
+  var args = Array.prototype.slice.call(arguments);
+  ...
 }
 ```
 
-豁然开朗，因为 slice 方法不光 Array有，String也有，为了不冲突，所以当要讲一个 Array-like Object转化成 Array 的时候，可以用 `trigger` 方法这样触发 Array.prototype.slice 方法。所以可以得到一个浅复制过来的 `array`
+豁然开朗，因为 slice 方法不光 Array有，String也有，为了不冲突，所以当要将一个 Array-like Object转化成 Array 的时候，可以用 `trigger` 方法这样触发 Array.prototype.slice 方法。所以可以得到一个浅复制过来的 `array`
 
 
 happy coding, may the code will always be with you~
