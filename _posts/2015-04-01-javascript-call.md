@@ -48,7 +48,9 @@ fun.call(thisArg[, arg1[, arg2[, ...]]])
 
 不言而喻，到这个时候就很好理解了，`call` 叫一次这个方法
 
-一般来讲， `call` 有两个作用
+注意 call 函数中 thisArg 的作用是类似于 .bind(this)， 就是告诉 call 中的函数 `this` 代表了什么
+
+一般来讲， `call` 有三个作用
 
 1 子类继承父类时触发父类 constructor
 
@@ -94,7 +96,7 @@ var animals = [
 for (var i = 0; i < animals.length; i++) {
   (function(i) {
     this.print = function() {
-      console.log('#' + i + ' ' + this.species
+      console.log('#' + i + ' ' + this.species // 'this' is animals[i] out side
                   + ': ' + this.name);
     }
     this.print();
@@ -107,6 +109,7 @@ for (var i = 0; i < animals.length; i++) {
 ``` javascript
 function trigger() {
   var args = Array.prototype.slice.call(arguments);
+  // bind arguments to this, and passes no argument to 'slice' method
   ...
 }
 ```
