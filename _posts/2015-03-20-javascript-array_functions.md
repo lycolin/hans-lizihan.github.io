@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      javascript Array#forEach|map|filter|reduce|sort
+title:      javascript Array 高级函数
 date:       2015-03-19 23:00
 summary:    map filter forEach sort
 categories: javascript
