@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      javascript Function.prototype.call
+title:      javascript Function#call
 date:       2015-04-01 00:20
 summary:    call
 categories: javascript

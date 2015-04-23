@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Javascript Array.prototype.concat Function.prototype.apply
+title:      javascript Array#concat Function#apply
 date:       2015-04-23 23:40
 summary:    Javascript concat reduce array_flatten
 categories: javascript

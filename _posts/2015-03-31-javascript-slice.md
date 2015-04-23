@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      javascript Array.prototype.slice
+title:      javascript Array#slice
 date:       2015-03-31 23:00
 summary:    Array.prototype.slice()
 categories: javascript

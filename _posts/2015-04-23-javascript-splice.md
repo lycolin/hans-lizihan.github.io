@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Javascript Array.prototype.splice
+title:      javascript Array#splice
 date:       2015-04-23 16:00
 summary:    Javascript splice
 categories: javascript

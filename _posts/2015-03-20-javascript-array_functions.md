@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      javascript Array.prototype.forEach|map|filter|reduce|sort
+title:      javascript Array#forEach|map|filter|reduce|sort
 date:       2015-03-19 23:00
-summary:    map filter forEach
+summary:    map filter forEach sort
 categories: javascript
 ---
 
