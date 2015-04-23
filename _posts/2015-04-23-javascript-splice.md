@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      Javascript splice()
+title:      Javascript Array.prototype.splice
 date:       2015-04-23 16:00
-summary:    Javascript Splice
+summary:    Javascript splice
 categories: javascript
 ---
 
