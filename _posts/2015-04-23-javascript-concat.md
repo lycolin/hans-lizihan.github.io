@@ -51,7 +51,7 @@ function array_flatten(arr) {
 }
 ```
 
-实际上这种实现方法跟 `underscore.js` 比较接近。 而且参考这篇文章 (http://jsperf.com/flatten-an-array-loop-vs-reduce)[loop-vs-reduce] 似乎在性能上面原生的 javascript loop 要好一些
+实际上这种实现方法跟 `underscore.js` 比较接近。 而且参考这篇文章 [http://jsperf.com/flatten-an-array-loop-vs-reduce](loop-vs-reduce) 似乎在性能上面原生的 javascript loop 要好一些
 
 （虽然recursive 最终都可以转化成 iterative 做进一步优化， 但是我觉得上面的代码可读性更强更好理解所以就不再多麻烦了（实际上是懒得钻研了暂时））
 
