@@ -28,6 +28,7 @@ highlighter: pygments
 markdown: redcarpet
 redcarpet:
   input: GFM
+  extensions: ["tables"]
 sass:
   style: compressed
 gems:

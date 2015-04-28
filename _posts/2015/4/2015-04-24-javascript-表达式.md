@@ -146,7 +146,8 @@ typeof f // 'number'
 当用 console.log() 输出的时候默认调用了 Function.prototype.toString() 方法
 
 ``` javascript
-console.log(function g(){console.log('hi')}) // function g(){console.log('hi')};
+console.log(function g(){console.log('hi')})
+// function g(){console.log('hi')};
 ```
 
 ### 2 函数调用表达式
@@ -168,7 +169,7 @@ js 里面创建一个对象是用 function 关键字的
 
 ``` javascript
 function Test(){
-    return new Date();
+  return new Date();
 }
 var test = new Test();
 console.log(test instanceof Test);//false
@@ -190,7 +191,9 @@ console.log(test);//Fri Apr 24 2015 12:59:22 GMT+0800 (HKT)
 
 ``` javascript
 'foo' == new function(){ return String('foo'); }; //false
+// function returns Object{}
 'foo' == new function(){ return new String('foo'); };//true
+// function returns String{0:'f', 1:'o', 2:'o' ...}
 ```
 
 所以 angular.js 中
