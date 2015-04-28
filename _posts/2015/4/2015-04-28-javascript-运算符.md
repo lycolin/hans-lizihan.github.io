@@ -273,51 +273,7 @@ NaN == NaN // false
 '1' == true // true
 ```
 
-## undefined 和 null 的 爱怨情仇
 
-undefined 会被解析成一个 string, null 会被解析成 0 或者 false
-
-``` javascript
-var a = null;
-a + 1 // 1
-a * 1 // 0
-1 / a // Infinity
-
-a = undefined;
-a + 1 // NaN
-a * 1 // NaN
-1 / a // NaN
-```
-
-此外二者的 type 也不同
-
-``` javascript
-var a = null
-typeof a // object
-var b = undefined
-typeof b // "undefined"
-```
-
-二者的情景也不同
-
-### null
-null 表示这里不应该有东西
-
-1. 作为函数的参数，表示该函数的参数不是对象。
-2. 作为对象原型链的终点。
-
-``` javascript
-Object.getPrototypeOf(Object.prototype); // prototype 终点
-```
-
-
-### undefined
-undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义。典型用法是：
-
-1. 变量被声明了，但没有赋值时，就等于undefined。
-2. 调用函数时，应该提供的参数没有提供，该参数等于undefined。
-3. 对象没有赋值的属性，该属性的值为undefined。
-4. 函数没有返回值时，默认返回undefined。
 
 参考 \* [阮大神的博客](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
     \* [Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html)
