@@ -199,6 +199,29 @@ new Number(1) instanceof Number; //true
 
 primitives instanceof 永远会是 false 记住就是
 
+## 应用的深入理解
+
+javascript 将 array 和 object 都当做是 reference ，所以每次构造出来一个 Object 或者 Array，并将它赋值给了一个变量的时候实际上是讲这个应用传给了它
+
+``` javascript
+var a = [1,2,3];
+var b = [1,2,3];
+a === b; // false
+```
+
+所以当比较两个相同的 [1,2,3] array 的时候，实际上我们是比较了两个不同的内存地址，所以 === 会返回 false
+
+此外因为是引用所以在修改引用的时候引用本身也会被修改
+
+``` javascript
+var a = [1,2,3];
+var b = a;
+a [0] = 2;
+b // [2,2,3]
+```
+
+所以回想之前的 array#sort 和 array#slice 现在终于明白了， 诸如 `sort` 这种方法，是直接修改引用, 而 `slice` 方法是赋值首层引用，__所以 `slice` 只能做到浅层拷贝__
+
 参考 \*: 继续感谢 @[Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html)
 
 happy coding, may the code will always be with you~
