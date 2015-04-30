@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      javascript , : () {} []
+title:      javascript 逗号，冒号，括号
 date:       2015-04-29 21:55
 summary:    javascript 基础篇之 逗号，冒号，括号
 categories: javascript
