@@ -217,4 +217,7 @@ function d() {
 })();
 ```
 
+参考: \* [javascript预编译](http://www.slideshare.net/lijing00333/javascript-engine)
+     \* _javascript权威指南_
+		
 happy coding, may the code will always be with you~

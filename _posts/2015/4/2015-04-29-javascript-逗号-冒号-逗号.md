@@ -16,8 +16,8 @@ categories: javascript
 
 ``` javascript
 var a=1,
-	  b=2,
-	  c=3;
+    b=2,
+    c=3;
 ```
 
 注意上面这种声明变量的方法比较简约，但是却是有不少的问题。
@@ -99,8 +99,8 @@ var a = true ? 'hihi': 'nono';
 
 ``` javascript
 var obj = {
-	'a' : 1,
-	'b' : 1
+  'a' : 1,
+  'b' : 1
 }
 ```
 
@@ -108,14 +108,14 @@ var obj = {
 
 ``` javascript
 switch(condition) {
-	case 1:
-	  console.log('hihi');
-		break;
-	case 2:
-		console.log('nono');
-		break;
-	default:
-		break;
+  case 1:
+    console.log('hihi');
+    break;
+  case 2:
+    console.log('nono');
+    break;
+  default:
+    break;
 }
 ```
 
@@ -128,8 +128,8 @@ x:y:z:1,2,3 // return 3
 
 ///
 x:
-	y:
-		z: 1,2,3
+  y:
+    z: 1,2,3
 ```
 
 ``` javascript
@@ -148,8 +148,8 @@ console.log(x); // 2
 
 ``` javascript
 var a = {
-	'a': 1,
-	'b': 2
+  'a': 1,
+  'b': 2
 }
 ```
 
@@ -195,12 +195,12 @@ console.log(i) // 10
 
 ``` javascript
 function fn(n){
-	if(n>1){
-		var a = n;
-	} else {
-		var b = n;
-	}
-	console.log(a);
+  if(n>1){
+    var a = n;
+  } else {
+    var b = n;
+  }
+  console.log(a);
 }
 
 fn(2) // 2
@@ -316,9 +316,10 @@ var jsonObj = eval('(' + jsonString + ')');
 这里必须引出大招: es 的函数声明和表达式的区别
 
 > 函数声明必须带有标示符（Identifier）（就是大家常说的函数名称），而函数表达式则可以省略这个标示符：
-> 函数声明:
-　　function 函数名称 (参数：可选){ 函数体 }
-　函数表达式：
+
+函数声明:
+  function 函数名称 (参数：可选){ 函数体 }
+函数表达式:
 　　function 函数名称（可选）(参数：可选){ 函数体 }
 
 一般来讲，区分的主要方法是这样的
