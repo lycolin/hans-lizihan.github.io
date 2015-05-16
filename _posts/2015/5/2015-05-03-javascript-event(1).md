@@ -6,8 +6,6 @@ summary:    javascript 基础篇之 event
 categories: javascript
 ---
 
-# javascript event(1)
-
 web 2.0 时代页面交互变得无比重要，事件作为交互的中心是 js 重中之重
 
 事件实际上时使用了设计模式中的 `observer pattern`, 即事件监听者一直注视事件容器，然后轮询来捕获事件的发生。 一旦相应的事件发生那么监听者就会触发相应事件所绑定的回调函数来执行一些 handler 逻辑
@@ -151,6 +149,7 @@ function(){
   }
 }
 ```
+
 内联 html 事件处理的作用域确实很让人费解，不过好在随着时代的进步，大家发现 html 和 javascript 的高度耦合并不是什么好主意 (angularjs 哭晕在厕所) 所以大的潮流还是用纯 js 来做事件的处理
 
 ### DOM0 事件处理
@@ -300,6 +299,15 @@ document.body.onclick = function(event){
 };
 ```
 
+### 事件对象的存活周期
+
+注意 `event` 这个对象只有在 `handler` 里面才会被自动生成出来，当 `handler` 函数执行结束的时候 `事件对象` 会被销毁
+
+参考:
+
+* *javascript 高级编程*
+
+连续剧: [javascript event(2)](/javascript/2015/05/10/javascript-event(2).html)
 
 
 happy coding, may the code will always be with you~

@@ -240,6 +240,7 @@ function Foobar() {
 可以看到 当调用 new factory() 的时候内部将会返回一个 object 此 object 则是 ng 中用到的单例 而不是 factory 类本身
 
 参考:
-  * [JavaScript面试时候的坑洼沟洄——表达式与运算符](http://www.cnblogs.com/dolphinX/p/3524977.html)
+
+* [JavaScript面试时候的坑洼沟洄——表达式与运算符](http://www.cnblogs.com/dolphinX/p/3524977.html)
 
 happy coding, may the code will always be with you~

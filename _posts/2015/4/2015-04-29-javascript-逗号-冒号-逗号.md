@@ -16,8 +16,8 @@ categories: javascript
 
 ``` javascript
 var a=1,
-    b=2,
-    c=3;
+  b=2,
+  c=3;
 ```
 
 注意上面这种声明变量的方法比较简约，但是却是有不少的问题。
@@ -185,7 +185,7 @@ if() {
 
 ``` javascript
 for(var i = 0; i < 10; i ++) {
-	console.log(i);
+  console.log(i);
 }
 
 console.log(i) // 10
@@ -351,13 +351,13 @@ function () {
 
 ``` javascript
 (function() {
-	console.log('meth1')
+  console.log('meth1')
 })()
 // function(){}
 // 'meth1'
 
 +function() {
-	console.log('meth2')
+  console.log('meth2')
 }()
 // NaN
 // 'meth2'
@@ -387,7 +387,8 @@ a['b']  // 1
 ```
 
 参考:
-	\* [Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html)
-	\* *javascript 权威指南*
+
+* [Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html)
+* *javascript 权威指南*
 
 happy coding, may the code will always be with you~

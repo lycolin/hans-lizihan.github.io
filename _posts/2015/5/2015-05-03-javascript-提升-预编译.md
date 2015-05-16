@@ -13,11 +13,11 @@ js 是解释性语言
 整个 js 的运行原理是
 
 1. 语法检查
-	1. 词法分析
-	2. 语法分析
+  1. 词法分析
+  2. 语法分析
 2. 运行时
-	1. 预编译
-	2. 运行
+  1. 预编译
+  2. 运行
 
 所以没一段 js 的表达式 或者表达式组合 都会进过这样几个 过程
 
@@ -59,10 +59,10 @@ var a = 1; // a 赋值为 a
 ``` javascript
 a(); // hihi
 function a() {
-	alert('hihi');
+  alert('hihi');
 }
 var a = function() {
-	alert('heihei');
+  alert('heihei');
 }
 a(); // tom
 ```
@@ -86,19 +86,19 @@ a = function() {} // 运行时变量赋值
 ``` javascript
 a(); // 2
 function a() {
-	alert(1);
+  alert(1);
 }
 
 a(); // 2
 
 function a() {
-	alert(2);
+  alert(2);
 }
 
 a(); // 2
 
 var a = function () {
-	alert(3);
+  alert(3);
 }
 
 a(); // 3
@@ -129,26 +129,26 @@ typeof a === 'undefined'
 
 ``` javascript
 function () {
-	console.log(b); // undefined
-	if(false) var b = 1;
+  console.log(b); // undefined
+  if(false) var b = 1;
 }
 
 // is same as
 
 function () {
-	var b;
-	console.log(b); // undefined
-	if(false) b = 1; // 不会被执行到
+  var b;
+  console.log(b); // undefined
+  if(false) b = 1; // 不会被执行到
 }
 ```
 
 ``` javascript
 function global() {
-	oops = 'hihi';
+  oops = 'hihi';
 }
 
 function local() {
-	var oops = 'heihei';
+  var oops = 'heihei';
 }
 
 console.log(window.oops); // undefined
@@ -174,25 +174,25 @@ console.log(window.oops); // 'hihi';
 
 ``` javascript
 function a() {  
-	// bad: lack of strict mode, may cause untraceable errors
-	// logic here
+  // bad: lack of strict mode, may cause untraceable errors
+  // logic here
 }
 
 function b() {
-	// good, always specific strict mode in the first level of global scope
-	'use strict';
+  // good, always specific strict mode in the first level of global scope
+  'use strict';
 }
 
 
 function c() {
-	// bad, directly variable assignment without `var` keyword
-	someVar = 'ihih';
+  // bad, directly variable assignment without `var` keyword
+  someVar = 'ihih';
 }
 
 function d() {
-	'use strict';
-	// good always use strict mode and `var` keyword
-	var someVar = 'hihi';
+  'use strict';
+  // good always use strict mode and `var` keyword
+  var someVar = 'hihi';
 }
 ```
 
@@ -210,14 +210,16 @@ function d() {
 
 // good: use function level of strict mode with IIFE
 (function () {
-	'use strict';
-	function f(){};
-	function g(){};
-	...
+  'use strict';
+  function f(){};
+  function g(){};
+  ...
 })();
 ```
 
-参考: \* [javascript预编译](http://www.slideshare.net/lijing00333/javascript-engine)
-     \* _javascript权威指南_
-		
+参考: 
+
+* [javascript预编译](http://www.slideshare.net/lijing00333/javascript-engine)
+* _javascript权威指南_
+
 happy coding, may the code will always be with you~

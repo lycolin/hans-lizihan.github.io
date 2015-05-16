@@ -6,8 +6,6 @@ summary:    javascript 基础篇之数据类型
 categories: javascript
 ---
 
-# JS 数据类型
-
 js 作为弱类型语言，数据类型的坑简直多崩
 
 其实 js 的只有两大种 类型

@@ -6,8 +6,6 @@ summary:    javascript 基础篇之运算符
 categories: javascript
 ---
 
-# Javascript 运算符
-
 javascript 中最最坑爹的就是运算符了， 作为一门弱类型语言，运算符的处理本来就比较棘手，来到 js 的世界就更加棘手了， 从家喻户晓的 `===` 到 string 的加减法， js 中运算符的坑娃沟坎无处不在
 
 首先抛出一个大表 (结核性中 R 表示右结合)(参考 [Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html) 大大的博客 (POI 粉握手) 和 `javascript 权威指南`)
