@@ -220,6 +220,8 @@ b // [2,2,3]
 
 所以回想之前的 array#sort 和 array#slice 现在终于明白了， 诸如 `sort` 这种方法，是直接修改引用, 而 `slice` 方法是赋值首层引用，__所以 `slice` 只能做到浅层拷贝__
 
-参考 \*: 继续感谢 @[Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html)
+参考 
+
+* 继续感谢 @[Samaritans](http://www.cnblogs.com/dolphinX/p/3524977.html)
 
 happy coding, may the code will always be with you~

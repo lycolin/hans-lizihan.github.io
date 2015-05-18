@@ -106,7 +106,7 @@ typeof g();//g is not defined
 
 ``` javascript
 (function f(f){
-    return typeof f();// 'number'
+  return typeof f();// 'number'
 })(function(){return 1;});
 ```
 
@@ -125,11 +125,11 @@ typeof g();//g is not defined
 ``` javascript
 var f = 1;
 (function f(){
-    return typeof f;// 'function'
+  return typeof f;// 'function'
 })();
 
 (function f(f){
-    return typeof f; // 'string'
+  return typeof f; // 'string'
 }('hi'))
 
 typeof f // 'number'

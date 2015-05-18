@@ -64,7 +64,7 @@ function a() {
 var a = function() {
   alert('heihei');
 }
-a(); // tom
+a(); // heihei
 ```
 
 1. 看到 var a，将 `a` 放入栈 赋值为 `undefined`

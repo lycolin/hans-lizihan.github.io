@@ -2,7 +2,7 @@
 layout:     post
 title:      javascript event(1)
 date:       2015-05-03 19:37
-summary:    javascript 基础篇之 event
+summary:    javascript event 基础篇
 categories: javascript
 ---
 

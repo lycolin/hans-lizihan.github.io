@@ -2,7 +2,7 @@
 layout:     post
 title:      javascript event(2)
 date:       2015-05-10 10:30
-summary:    javascript event
+summary:    javascript event 常用事件
 categories: javascript
 ---
 
