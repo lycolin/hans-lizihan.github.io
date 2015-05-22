@@ -2,7 +2,7 @@
 layout:     post
 title:      javascript 对象(2) 对象创建
 date:       2015-05-21 12:06
-summary:    javascript 基础篇之对象创建
+summary:    javascript 基础篇之 对象创建
 categories: javascript
 ---
 

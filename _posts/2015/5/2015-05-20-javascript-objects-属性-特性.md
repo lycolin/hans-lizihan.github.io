@@ -2,7 +2,7 @@
 layout:     post
 title:      javascript 对象(1) 属性 特性
 date:       2015-05-20 12:07
-summary:    javascript 基础篇之对象
+summary:    javascript 基础篇之 对象 属性 特性
 categories: javascript
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      javascript 模块模式
-date:       2015-05-21 15:48
+date:       2015-05-21 11:50
 summary:    javascript 设计模式 模块模式
 categories: javascript
 ---

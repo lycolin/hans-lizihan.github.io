@@ -160,7 +160,7 @@ function(){return;}(); // undefined
 ### 3 对象创建
 
 ``` javascript
-type of new Date(); // object
+typeof new Date(); // object
 ```
 
 这里坑又来了
