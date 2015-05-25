@@ -2,7 +2,7 @@
 layout:     post
 title:      javascript 变量 作用域(2)
 date:       2015-05-22 00:37
-summary:    javascript 基础篇之 变量 作用域(2)
+summary:    javascript 基础篇之 作用域 this 执行环境
 categories: javascript
 ---
 
