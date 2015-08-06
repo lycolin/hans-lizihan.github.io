@@ -24,7 +24,7 @@ str.substr(0, 2); // 'ab'
 str.substr(1, 2); // 'bc'
 str.substr(1, 0); // ''
 str.substr(1, -1); // ''
-str.substr(-1); // 'abcdef'
+str.substr(-1); // 'f'
 str.substr(7); // ''
 ```
 
