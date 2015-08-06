@@ -97,8 +97,8 @@ var valueOfReferenceType  = {
 ### 1 identifier
 
 ``` javascript
-function foo() {};
-var bar = 10;
+var foo = 10;
+function bar() {};
 ```
 
 他们俩的引用类型是这样的
@@ -111,7 +111,7 @@ var fooReference = {
 
 var barReference = {
   base: global,
-  prototypeName: 'bar'
+  propertyName: 'bar'
 }
 ```
 
@@ -136,7 +136,13 @@ function GetValue() {
 
 注意这里面 [[Get]] 就是对象的 accessor 方法
 
-总结来说就是 identifier base 的 call 中的 reference base 是当前 call 这个函数的 caller
+e.g.
+```
+GetValue(fooReference); // 10
+GetValue(barReference); // function object 'bar';
+```
+
+总结来说就是 identifier base 的调用中的 reference base 是当前调用这个函数的 caller
 
 ### 2 object accessor
 
@@ -149,7 +155,7 @@ foo.bar();
 ``` javascript
 fooBarReference = {
   base: foo,
-  prototypeName: 'bar'
+  propertyName: 'bar'
 }
 ```
 
@@ -176,7 +182,7 @@ foo(); // global
 ``` javascript
 fooReference {
   base: global,
-  prototypeName: 'foo'
+  propertyName: 'foo'
 }
 ```
 
@@ -184,7 +190,7 @@ fooReference {
 
 ``` javascript
 function foo() {
-  bar: fucntion () {
+  bar: function () {
     return this;
   }
 }
@@ -192,7 +198,7 @@ function foo() {
 foo.bar(); // foo
 ```
 
-解释通了
+解释通了 对于 bar 来说，他的 base 是 `foo`
 
 ``` javascript
 fooBarReference = {
@@ -225,14 +231,47 @@ testReference = {
 
 这就可以解释通很多怪癖了。
 
+e.g.
+
+``` javascript
+function foo() {
+  console.log(this);
+}
+ 
+foo(); // global, because
+ 
+var fooReference = {
+  base: global,
+  propertyName: 'foo'
+};
+ 
+alert(foo === foo.prototype.constructor); // true
+ 
+// 另外一种形式的调用表达式
+ 
+foo.prototype.constructor(); // foo.prototype, because
+ 
+var fooPrototypeConstructorReference = {
+  base: foo.prototype,
+  propertyName: 'constructor'
+};
+```
+
 ### 非引用类型在 () 左边
+
+> 非引用类型在 () 左边, this 被赋值为 'undefined'
 
 ``` javascript
 (function() {
-  'use strict';
-  console.log(this); // undefined
+  console.log(this); // null => global
 })();
 ```
+
+因为 (function() {}) 既不是标示符也不是属性accessor
+
+所以其内部的this 在非严格模式下为 `null` 并被转化为 `global`
+
+复杂例子:
 
 ``` javascript
 var foo = {
@@ -240,14 +279,23 @@ var foo = {
     console.log(this);
   }
 };
-foo.bar(); // foo
-(foo.bar)(); // foo
-(foo.bar = foo.bar)(); // foo
+foo.bar(); // reference => foo
+(foo.bar)(); // reference => foo
+(foo.bar = foo.bar)(); // undefined
 (false || foo.bar)(); // undefined
 (foo.bar, foo.bar)(); // undefined
 ```
 
-这里要明白的一点就是各种运算符的返回结果都会调用 GetValue 伪代码，而不是返回赋值的引用本身。所以对于这种非引用类型，加一个括号在右边导致了内部的 this 被设置成了 undefined
+这里要明白的一点就是各种运算符的返回结果都会调用 GetValue 伪代码，而不是返回赋值的引用本身。
+
+对于第三个例子 `(foo.bar = foo.bar)` 过程是这样的
+
+```
+(foo.bar = foo.bar) => foo.bar 
+// 注意返回的不是foo.bar 的引用 而是foo.bar 的值
+```
+
+所以对于这种非引用类型，加一个括号在右边导致了内部的 this 被设置成了 undefined
 
 
 ### 函数中的调用

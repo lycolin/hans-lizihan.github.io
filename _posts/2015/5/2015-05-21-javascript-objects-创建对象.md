@@ -67,27 +67,62 @@ function Person(name, age, job) {
 }
 ```
 
-可以看到构建函数模式更加简约，省去了 `return` 这个步骤。同时省区了 `new` 一个 `Object` 的步骤。
+可以看到构建函数模式更加简约，省去了 `return` 这个步骤。同时省去了 `new Object()` 的步骤。
 
 此外注意 js 中默认的 convention 是用大写字母开头做 constructor 的函数名。
 
 因为 js 最凶残的一个特性就是 __任何函数__ 都可以被用作为 constructor 所以为了区分我们刚开始就想当成构造函数的函数和一般的函数，大写开头的函数永远都是构造函数。
 
-好了回到构造函数模式。之前无论任何语言都有 new 这个关键字。但是这个关键在在后面做了什么总是那部分被隐藏的细节。今天头一次看到  `new` 关键字做了什么，在 javascript 中。
+好了回到构造函数模式。之前无论任何语言都有 new 这个关键字。但是这个关键在在后面做了什么总是那部分被隐藏的细节。今天头一次看到 `new` 关键字做了什么。
 
-1. 创建一个新的对象
-2. 将构造函数的作用域给新的对象(所以 this.name 是对象的属性)
+在 javascript 中, `new` 关键字的工作分为下面几个步骤。
+
+1. 创建一个新的对象并将自己的应用赋值给(`var obj = Object.create(self.prototype)`)
+2. 将构造函数的作用域给新的对象(所以 this.name 是对象的属性) -> (`this` *-> `obj`)
 3. 执行构造函数的代码
-4. 返回新的对象。
+4. 返回新的对象。(`return obj`)
 
-这么一看了然。其实 new 的作用就是刚刚我们在工厂模式中手动做的一些事儿，只不过中间缺了一步实在 `new Object()` 之后将 实例中的 Object 作用域转化一步。
+注意 `Object.create` 其实是一个语法糖，啰嗦点的写法是这样的
 
 这也就是 javascript 中为什么 __所有__ 对象的祖先都是 `Object`
+
+注意 `new` 关键字
+
+1. 创建新的对象发生在构造函数开始执行之前。
+2. 返回创建好的对象发生在构造函数执行之后。
+
+换句话说就是这两个逻辑是生存在 `{}` 外面的，一前一后。
+
+所以如果说在构造函数中用 `return` 关键字返回了一个
+
+1. __引用类型__，就会干预 `new` 的操作进程。默认的返回构造的对象就不会被反回了。
+2. __原始类型__，那么构造函数忽略这个 `return` 继续 `new` 的流程。
+
+这也说得通。因为正常来讲如果什么都不返回那么隐式的就是 `return undefined`, undefined 是一个 primitive 所以 `new` 的流程还是正常的。
+
+举例。
+
+``` javascript
+function Person (name) {
+  this.name = name;
+  return [1,2,3];
+}
+console.log(new Person('hans')); // [1,2,3]
+///////
+function Person (name) {
+  this.name = name;
+  return '123';
+}
+console.log(new Person('hans')); // {name: 'hans'}
+```
 
 除此之外用构造函数法创建对象还有一个好处，那就是这个对象可以作为一个我们自定义的对象类型被我们引用。
 
 ``` javascript
 console.log(person1 instanceof Person); // true
+// because
+person1.__proto__ === Person.prototype;
+Object.getPrototypeOf(person1) === Person.prototype;
 ```
 
 除此之外还要理解一点就是通过构造函数法构造出来的实例都有一个  `constructor` 的属性。这是一个指向 构造函数的指针。
@@ -105,7 +140,8 @@ console.log(person1.constructor === Person); // true
 ``` javascript
 String('hihi'); // hihi
 
-new String('hihi') // String {0: "h", 1: "i", 2: "h", 3: "i", length: 4, [[PrimitiveValue]]: "hihi"}
+new String('hihi') 
+// String {0: "h", 1: "i", 2: "h", 3: "i", length: 4, [[PrimitiveValue]]: "hihi"}
 ```
 
 `String` 方法直接返回了一个字符串值，而带了 new 之后就直接返回了一个 String 的实例
@@ -191,7 +227,7 @@ console.log(person1.sayHi === person2.sayHi); // true
        |                                                             |
        v                                                             |
 +-------------------+         +-------------------------------+      |
-|  Person           |    +--->| Person prtotype               |      |
+|  Person           |    +--->| Person prototype              |      |
 +-------------------+    |    +-------------------------------+      |
 | prototype |       |----+    | constructor     |             |------+
 +-------------------+    |    +-------------------------------+
@@ -483,7 +519,7 @@ console.log(person1 instanceof Object); //true
 
 这里值得注意的是之前看到  `new` 关键字会默认返回 new 出来的新实例，但是如果说构造函数有了 `return` 关键字，那么 `new` 关键字就会返回构造函数中的 return 回来的对象。
 
-这种模式的好处是可以简单得做到一些继承的效果，但是坏处也很明显： 就是这么重载 `return` 的做法使得 `Person` 不能作为一个类型存在了 所以气势上并不推荐这样构建对象。
+这种模式的好处是可以简单得做到一些继承的效果，但是坏处也很明显： 就是这么重载 `return` 的做法使得 `Person` 不能作为一个类型存在了 所以其实上并不推荐这样构建对象。
 
 ## 稳妥构造函数模式 (durable object)
 

@@ -91,7 +91,7 @@ console.log(obj.attribute); //hoho
 
 上面这个例子中如果按照常理， call by value 得话那么在 `test` 函数中修改 args 应该不影响外部的 `obj` 才对，但是事实上修改了 `args` 之后 `obj` 也发生了改变。 说好了的 call by value 呢？
 
-其实故事是这样的，reference 的 参数传递是将 reference 的内存地址复制一份传入到 args 里面然后再 `test` 函数中修改 `args` 其实是对 指针指过去的 `obj` 直接进行了修改。然而这并不是 `call by reference`, 因为我们传入的 `args` 并不是 `reference` 的内存指针而是一个 __复制__ 出来的指针。
+其实故事是这样的，reference 的 参数传递是将 reference 的内存地址复制一份传入到 args 里面然后在 `test` 函数中修改 `args` 其实是对 指针指过去的 `obj` 直接进行了修改。然而这并不是 `call by reference`, 因为我们传入的 `args` 并不是 `reference` 的内存指针而是一个 __复制__ 出来的指针。
 
 ``` javascript
 var obj = new Object();
@@ -304,7 +304,7 @@ testEC={
 };
 ```
 
-这里值得注意的就是 __函数表达式不会对VO造成影响，因此，(function x() {})并不会存在于VO中。__
+这里值得注意的就是 __函数表达式不会对VO造成影响，因此，(function x() {})并不会存在于AO(VO)中。__
 
 ### EC
 
