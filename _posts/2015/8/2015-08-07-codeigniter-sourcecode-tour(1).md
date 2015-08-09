@@ -3,7 +3,7 @@ layout:     post
 title:      php CI 源码探索(1)
 date:       2015-08-07 18:52
 summary:    php CI 代码解读(1)
-categories: php
+categories: php CodeIgniter
 ---
 
 ## 重拾 CI3 
