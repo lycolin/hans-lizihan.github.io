@@ -84,4 +84,4 @@ $result = $judge ? $judge : 'something else';
 $result = $judge ?: 'somthing else';
 ?>
 ```
-
+* php [官方手册](http://php.net/manual/)
