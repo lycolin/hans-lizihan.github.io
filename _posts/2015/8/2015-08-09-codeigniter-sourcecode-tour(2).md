@@ -390,9 +390,15 @@ if (! function_exists('log_message')) {
             // references cannot be directly assigned to static variables, so we use an array
 
             // 依然不知为何要这样写 不知道这是哪个版本的兼容
+
             // core/Log.php
             // class: CI_Log
             // 回头仔细看
+
+            //** 
+            // 补充: 原来这个在给 php4 的 zend1 填坑 
+            // 看起来 php5 里面已经没有这个bug 了
+            // @see http://php.net/manual/en/language.variables.scope.php#language.variables.scope.references
             $_log[0] =& load_class('Log', 'core');
         }
 
