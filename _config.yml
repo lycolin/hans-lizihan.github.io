@@ -28,7 +28,7 @@ highlighter: pygments
 markdown: redcarpet
 redcarpet:
   input: GFM
-  extensions: ["tables"]
+  extensions: ["tables", "strikethrough"]
 sass:
   style: compressed
 gems:
