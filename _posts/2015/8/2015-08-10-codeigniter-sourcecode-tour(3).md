@@ -14,8 +14,8 @@ categories: php CodeIgniter
 
 顺序是这样的
 
-1. 如果 log_message 先被调用了 那么加载 `Exceptions` 类 (动态加载，只有在程序需要的时候加载) 副作用就是一起加载了 Log 类
-2. 加载 `Benchmark` ($BM)
+1. **如果 log_message 先被调用了 那么加载 `Exceptions` 类 (动态加载，只有在程序需要的时候加载) 副作用就是一起加载了 Log 类**
+2. **加载 `Benchmark` ($BM)**
 3. 加载 `Hooks` ($EXT)
 4. 加载 `Config` ($CFG)
 5. 加载 `Utf8` ($UNI)
