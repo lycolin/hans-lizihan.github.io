@@ -2,8 +2,8 @@
 layout:     post
 title:      javascript 常用工具详解
 date:       2015-08-09 16:00
-summary:    
-categories: php CI
+summary:    javascript 常用工具 原生 API
+categories: javascript
 ---
 
 这两天写 javascript 的时候经 看到同事引入了一个 `util.js` 
