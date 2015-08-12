@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      php CI 源码探索(4)
+title:      php CI 源码探索(5)
 date:       2015-08-11 1:33
-summary:    php CI 代码解读(4) Hooks, Config
+summary:    php CI 代码解读(5) Route
 categories: php CodeIgniter
 ---
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      php CI 源码探索(4)
 date:       2015-08-11 1:33
-summary:    php CI 代码解读(4) Hooks, Config
+summary:    php CI 代码解读(4) UTF, URI
 categories: php CodeIgniter
 ---
 
