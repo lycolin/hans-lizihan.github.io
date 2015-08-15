@@ -70,6 +70,9 @@ class CI_Router
         // Set any routing overrides that may exist in the main index file
         // 还记得那年大明湖畔的 (index.php) 中的 $routing 数组么
         // 这个数组被最后就被传进了这个 constructor
+        // 同样的 当年 index.php 中就提示我们 如果有这个数组的话 那么这个数组指定
+        // 的 controller 即将是整个程序的唯一的 controller
+        // 因为无论 _set_routing 干了什么 下面这坨都会覆盖掉
         if (is_array($routing)) {
             if (isset($routing['directory'])) {
                 $this->set_directory($routing['directory']);
@@ -299,24 +302,32 @@ class CI_Router
     }
 
     // 小型验证 确定确实有这个 controller
+    // 这个方法就是 CI 中 directory 这个概念的核心了
     protected function _validate_request($segments)
     {
         $c = count($segments);
         // Loop through our segments and return as soon as a controller
         // is found or when such a directory doesn't exist
         while ($c-- > 0) {
+            // localhost:8000/welcome
+            // -> '' . 'Welcome'
             $test = $this->directory
                 .ucfirst($this->translate_uri_dashes === true ? str_replace('-', '_', $segments[0]) : $segments[0]);
 
+            // 如果没有在 application/controllers 中找到 Welcome.php
+            // 而且 application/controllers/welcome 是一个文件夹
             if (! file_exists(APPPATH.'controllers/'.$test.'.php') && is_dir(APPPATH.'controllers/'.$this->directory.$segments[0])) {
+                // $this->directory 变成了 'welcome/'
                 $this->set_directory(array_shift($segments), true);
                 continue;
             }
-
+            // 这里意味着这些 segments 就是 class->method 了
+            // 或者 class
             return $segments;
         }
 
         // This means that all segments were actually directories
+        // 如果到了这一步就说明所有的 welcome/to/ 都变成了 direcotry
         return $segments;
     }
 
