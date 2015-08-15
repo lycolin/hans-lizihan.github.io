@@ -2,7 +2,7 @@
 layout:     post
 title:      php CI 源码探索(7)
 date:       2015-08-11 1:33
-summary:    php CI 代码解读(5) Route
+summary:    php CI 代码解读(7) Security Language Loader
 categories: php CodeIgniter
 ---
 
