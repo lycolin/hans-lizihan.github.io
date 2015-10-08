@@ -36,7 +36,7 @@
       transition: width .6s ease; 
     }
     .progress-container {
-      height: 40px;
+      height: 30px;
       margin-bottom: 20px;
       overflow: hidden;
       background-color: #f5f5f5;
@@ -102,6 +102,9 @@
     <section>
       <h3 style="text-transform: none">Argouml</h3>
       <p><a href="http://argouml.tigris.org/">Argouml</a> is suggest by Joe in the specification, I downloaded it and it is a pure wysiwyg(what you see is what you get) diagram editor.</p>
+      <div class="text-center">
+        <img style="width: 40%; height: auto; float: left; margin-right: 40px" src="http://static.filehorse.com/screenshots/developer-tools/argouml-screenshot-01.png">
+      </div>
       <p>The <a href="http://ftp.stu.edu.tw/BSD/FreeBSD/ports/distfiles/argouml/manual-0.34.pdf">software</a> is very easy to use, however, it is based on digram, so team collaboration is not ideal</p>
     </section>
       
@@ -133,7 +136,7 @@ rectangle checkout {
       <p>Intellij does not support argouml plugin</p>
       <h4>2. For plantuml</h4>
       <p>Both <span class="text-underline">Eclipse</span> and <span class="text-underline">Intellij</span> has good support on plantuml</p>
-      <p>Plantuml also accessable for sublime via <a href="https://github.com/jvantuyl/sublime_diagram_plugin">sublime diagram plugin</a></p>
+      <p>Plantuml also accessable for <span class="text-underline">sublime</span> via <a href="https://github.com/jvantuyl/sublime_diagram_plugin">sublime diagram plugin</a></p>
     </section>
   </section>
 
@@ -161,6 +164,7 @@ rectangle checkout {
       <ol>
         <li>Whole group do reading and research on the specification</li>
         <li>1 Group member deliver a brief presentation others</li>
+        <li>Project basic set-ups (software installation, repository initialization)</li>
       </ol>
     </section>
     <section>
@@ -188,10 +192,17 @@ rectangle checkout {
     </section>
 
     <section>
-      <h4>2.2.5 Class-Base modeling</h4>
+      <h4>2.2.5 Class-Base modeling (15%)</h4>
       <ol>
         <li>2 Group members work on this task</li>
         <li>Whole group review the results</li>
+      </ol>
+    </section>
+    <section>
+      <h4>2.2.6 Report Formatting merging</h4>
+      <ol>
+        <li>1 Group member work along</li>
+        <li>Whole team review the report and then submit the report</li>
       </ol>
     </section>
   </section>
@@ -217,22 +228,22 @@ rectangle checkout {
       <div>
         <h3>Timeline</h3>
         <div class="progress-container">
-          <div class="progress-bar" style="background-color: #5cb85c;width: 20%"><small>R: 20%</small></div>
-          <div class="progress-bar" style="background-color: #d9534f; width: 10%"><small>U: 10%</small></div>
-          <div class="progress-bar" style="background-color: #337ab7; width: 20%"><small>A: 20%</small></div>
-          <div class="progress-bar" style="background-color: #f0ad4e;width: 20%"><small>S: 20%</small></div>
-          <div class="progress-bar" style="background-color: #337ab7;width: 15%"><small>C: 15%</small></div>
-          <div class="progress-bar" style="background-color: #5cb85c; width: 10%"><small>R: 10%</small></div>
-          <div class="progress-bar" style="background-color: #d9534f; width: 5%"><small>B: 5%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="1" style="background-color: #5cb85c;width: 20%"><small>20%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="2" style="background-color: #d9534f; width: 10%"><small>10%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="3" style="background-color: #337ab7; width: 20%"><small>20%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="4" style="background-color: #f0ad4e;width: 20%"><small>20%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="5" style="background-color: #337ab7;width: 15%"><small>15%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="6" style="background-color: #5cb85c; width: 10%"><small>10%</small></div>
+          <div class="progress-bar fragment" data-fragment-index="7" style="background-color: #d9534f; width: 5%"><small>5%</small></div>
         </div> 
-        <ol>
-          <li>Research: 20% (3 days) (10 Oct)</li>
-          <li>Usecase diagram: 10% (2 day) (12 Oct)</li>
-          <li>Activity diagram: 20% (4 days) (16 Oct)</li>
-          <li>State diagram: 20% (4 days) (20 Oct)</li>
-          <li>Class diagram: 15% (2 days) (22 Oct)</li>
-          <li>Report: 10% (2 days) (24 Oct)</li>
-          <li>Buffer: 5% (24 Oct - 26 Oct)</li>
+        <ol style="margin-top: 30px;">
+          <li class="fragment" data-fragment-index="1">Research: 20% (3 days) (9 - 10 Oct)</li>
+          <li class="fragment" data-fragment-index="2">Usecase diagram: 10% (2 day) (10 - 12 Oct)</li>
+          <li class="fragment" data-fragment-index="3">Activity diagram: 20% (4 days) (12 - 16 Oct)</li>
+          <li class="fragment" data-fragment-index="4">State diagram: 20% (4 days) (16 - 20 Oct)</li>
+          <li class="fragment" data-fragment-index="5">Class diagram: 15% (2 days) (20 - 22 Oct)</li>
+          <li class="fragment" data-fragment-index="6">Report: 10% (2 days) (22 - 24 Oct)</li>
+          <li class="fragment" data-fragment-index="7">Buffer: 5% (24 - 26 Oct)</li>
         </ol>
       </div>
     </section>
