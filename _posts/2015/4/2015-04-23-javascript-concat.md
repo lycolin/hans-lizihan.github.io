@@ -17,14 +17,15 @@ categories: javascript
 ``` php
 <?php
 function array_flatten($arr) {
-    $result = [];
+  $result = [];
 
-    array_walk_recursive($arr, function($value) use (&$result) {
-        $result[] = $value;
-    });
+  array_walk_recursive($arr, function($value) use (&$result) {
+    $result[] = $value;
+  });
 
-    return $result;
+  return $result;
 }
+?>
 ```
 
 好吧，javascript 没有这么奢侈的 `array_walk_recursive` 那么只能自己手撸出来了
@@ -35,9 +36,9 @@ function array_flatten($arr) {
 
 function array_flatten(arr) {
   var result = [];
-  for(var i = 0; i < arr.length; i ++) {
+  for (var i = 0; i < arr.length; i ++) {
     // if we encountered an array, call recursively
-    if(Array.isArray(arr[i])) {
+    if (Array.isArray(arr[i])) {
       var flattened = array_flatten(arr[i]);
       for(var j = 0; j < flattened.length; j ++) {
         result.push(flattened[j]);
@@ -66,9 +67,9 @@ function array_flatten(arr) {
 
 这时候有一种非常优雅的写法，那就要引出 `Array.prototype.concat`
 
-> ```javascript
-  var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])
-  ```
+```javascript
+var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])
+```
 
 函数很好理解，就是简单地将新的 array 拼接到了 旧的 array 后面
 
@@ -92,9 +93,9 @@ var test = [1,2,3,[4,5,6],[7,8]];
 
 > The apply() method calls a function with a given this value and arguments provided as an array (or an array-like object).
 
-> ``` javascript
-  fun.apply(thisArg, [argsArray])
-  ```
+``` javascript
+fun.apply(thisArg, [argsArray])
+```
 
 OK 原来是 `call` 的兄弟。只不过 `call` 是接受的一个个 args 但是 `apply` 相当于直接接受了一个 `arguments` 得到的类数组函数，或者直接就是真实的数组
 
@@ -108,8 +109,8 @@ OK 原来是 `call` 的兄弟。只不过 `call` 是接受的一个个 args 但�
 var test = [[1,2],3,4,[5,6]];
 
 var result = test.reduce(function(pre, cur) {
-    return pre.concat(cur);
-},[]);
+  return pre.concat(cur);
+});
 // [1,2,3,4,5,6];
 ```
 
@@ -119,18 +120,18 @@ var result = test.reduce(function(pre, cur) {
 var test1 = [1,2,[3,[4,[5]]]];
 
 function flatten(arr) {
-   return arr.reduce(function(pre, cur) {
-        if(Array.isArray(cur)) {
-            return flatten(pre.concat(cur));
-        }
+  return arr.reduce(function(pre, cur) {
+    if(Array.isArray(cur)) {
+      return flatten(pre.concat(cur));
+    }
 
-        return pre.concat(cur);
-   }, []);
+    return pre.concat(cur);
+  }, []);
 }
 
 // [1,2,3,4,5]
 ```
 
-感觉 `reduce` 怎么看都比 `for` 清爽一点 （个人喜好，勿喷）
+感觉 `reduce` 怎么看都比 `for` 清爽一点 （个人喜好）
 
 happy coding, may the code will always be with you~

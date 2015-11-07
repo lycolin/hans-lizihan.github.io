@@ -14,20 +14,20 @@ categories: javascript
 
 ``` javascript
 function trigger() {
-     var args = Array.prototype.slice.call(arguments);
-     ...
+   var args = Array.prototype.slice.call(arguments);
+   ...
 }
 ```
 
 ## `arguments` property
 
-要先理解 `trigger` 方法，首先要理解一个关键概念， `arguments`
+要先理解 `trigger` 函数，首先要理解一个关键概念， `arguments`
 
 > The arguments object is an Array-like object corresponding to the arguments passed to a function.
 
 ``` javascript
 function test () {
-    console.log(arguments);
+  console.log(arguments);
 }
 
 test(); // {}
@@ -52,7 +52,7 @@ fun.call(thisArg[, arg1[, arg2[, ...]]])
 
 一般来讲， `call` 有三个作用
 
-1 子类继承父类时触发父类 constructor
+1 子类继承父类时触发父类 constructor, 有些类似于 java 中的 `super()` 用法，由于除了传参之外还要将子类的 `this` bind 给父类，所以 `call` 方法当仁不让
 
 ``` javascript
 function Product(name, price) {
@@ -85,7 +85,7 @@ var cheese = new Food('feta', 5);
 var fun = new Toy('robot', 40);
 ```
 
-2 匿名函数触发
+2 匿名函数触发 我们看到将 context bind 给了 animals 对象之后 print 函数可以正确打印对象相应的属性
 
 ``` javascript
 var animals = [
@@ -114,7 +114,7 @@ function trigger() {
 }
 ```
 
-豁然开朗，因为 slice 方法不光 Array有，String也有，为了不冲突，所以当要将一个 Array-like Object转化成 Array 的时候，可以用 `trigger` 方法这样触发 Array.prototype.slice 方法。所以可以得到一个浅复制过来的 `array`
+豁然开朗，因为 slice 方法不光 Array有，String也有，为了不冲突，所以当要将一个 Array-like Object转化成 Array 的时候，可以用 `trigger` 函数这样触发 Array.prototype.slice 方法。所以可以得到一个浅复制过来的 `array`
 
 
 happy coding, may the code will always be with you~

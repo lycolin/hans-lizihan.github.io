@@ -22,7 +22,6 @@ function trigger() {
 
 `splice` 虽然和 `slice` 只差了一个字母，但是他们的作用非常不同。因为 `splice` 会修改原数组的内容
 
->
 ``` javascript
 array.splice(start, deleteCount[, item1[, item2[, ...]]])
 ```

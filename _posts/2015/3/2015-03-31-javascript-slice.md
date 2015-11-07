@@ -15,12 +15,10 @@ javascript 数组操作中， `slice` 占据着极为重要的地位，因为这
 浅拷贝其实很简单，其实就是说，这个拷贝只负责拷贝一层， i.e. 单维数组首层拷贝
 
 ``` javascript
-// show down clone
-
 var test = [1,2,3,4,5,[5,6]];
 var clone = [];
-for(var i = 0; i < test.length; i++) {
-    clone[i] = test[i];
+for (var i = 0; i < test.length; i++) {
+  clone[i] = test[i];
 }
 
 console.log(clone); // [1,2,3,4,5,[5,6]];
@@ -47,7 +45,7 @@ var i;
 
 // bad
 for (i = 0; i < len; i++) {
-    itemsCopy[i] = items[i];
+  itemsCopy[i] = items[i];
 }
 
 // good
@@ -60,8 +58,8 @@ itemsCopy = items.slice();
 
 ``` javascript
 function trigger() {
-    var args = Array.prototype.slice.call(arguments);
-    ...
+  var args = Array.prototype.slice.call(arguments);
+  ...
 }
 ```
 
@@ -81,13 +79,13 @@ arr.slice([begin[, end]])
 
 ``` javascript
 Array.prototype.slice() = function (begin, end) {
-    var result = [];
+  var result = [];
 
-    for(var i = begin; i < end; i ++) {
-        result.push(this[i]);
-    }
+  for(var i = begin; i < end; i ++) {
+    result.push(this[i]);
+  }
 
-    return result;
+  return result;
 }
 ```
 
@@ -131,6 +129,8 @@ console.log(clone); // [];
 
 但是要时刻记住， slice 有一个语法糖，那就是 begin 可以是 负数
 
+当 start 是 负数的时候 `slice` 将 后入式 从后往前数。
+
 ``` javascript
 var test = [1,2,3,4];
 
@@ -138,8 +138,7 @@ var clone = test.slice(-1);
 console.log(clone); // [4]
 ```
 
-当 start 是 负数的时候 `slice` 将 后入式 从后往前数，输出倒数第二，如果 `end` 被省略，那么它只会输出一个
-
+当 `start` 为正数  `end` 为负数的时候 语法糖使用与 `end` 下面这段代码就会从正数第二，一直拷贝到 倒数第二
 
 ``` javascript
 var test = [1,2,3,4];
@@ -149,12 +148,14 @@ var clone = test.slice(1, -1);
 console.log(clone); // [2,3]
 ```
 
-当 `start` 为正数  `end` 为负数的时候 语法糖使用与 `end` 上面这段代码就会从正数第二，一直拷贝到 倒数第二
+当 start 为负数 end 为正数的时候 `slice` 函数将不做操作。
 
 ``` javascript
 var test = [1,2,3,4];
 
 var clone = test.slice(-1, 1);
+
+console.log(clone); // []
 
 ```
 

@@ -18,10 +18,10 @@ PHP 中数组的高级函数可以优雅地解决不少问题 可惜 php.net 上
 ``` php
 <?php
 $filenames = [
-    'man',
-    'woman',
-    '李凌飞',
-]
+  'man',
+  'woman',
+  '李凌飞',
+];
 ```
 
 但是这一堆文件可能有很多种存储格式 .sql, .md, .json, .xml ...
@@ -31,13 +31,13 @@ $filenames = [
 ``` php
 <?php
 function jsonFileNames() {
-    $result = [];
+  $result = [];
 
-    foreach($filenames as $filename) {
-        $result[] = $filename. '.json';
-    }
+  foreach($filenames as $filename) {
+    $result[] = $filename. '.json';
+  }
 
-    return $result;
+  return $result;
 }
 ```
 
@@ -52,11 +52,9 @@ function jsonFileNames() {
 ``` php
 <?php
 function jsonFileNames() {
-
-    return array_map(function($file) {
-
-        return $file . '.json';
-    }, $filenames);
+  return array_map(function($file) {
+    return $file . '.json';
+  }, $filenames);
 }
 ```
 
@@ -67,11 +65,9 @@ function jsonFileNames() {
 ``` php
 <?php
 function returnFileNamesByType ($type) {
-
-    return array_map(function($file) use ($type) {
-
-        return "$file.$type";
-    });
+  return array_map(function($file) use ($type) {
+    return "$file.$type";
+  }, $filenames);
 }
 ```
 
@@ -85,11 +81,10 @@ $array1 = ['李凌飞', '他'];
 $array2 = ['是', '需要'];
 $array3 = ['单身狗', '女朋友'];
 print_r (
-    array_map(fucntion($value1, $valu2, $value3) {
-
-        return $value1 . $value2 . $value3;
-    }, $array1, $array2, $array3);
-)
+  array_map(fucntion($value1, $valu2, $value3) {
+    return $value1 . $value2 . $value3;
+  }, $array1, $array2, $array3);
+);
 /* [
  *    ['李凌飞是单身狗'],
  *    ['他需要女朋友'],
@@ -104,12 +99,12 @@ print_r (
 $input = ['key' => 'value'];
 array_map(function($key, $value) {
 
-    echo $key . $value;
+  echo $key . $value;
 }, array_keys($input), $input)
 // 'keyvalue'
 ```
 
-* 还有一些小的用法很好，比如说有一个数组的 `float`数
+* 还有一些小的用法很好，比如说有一个数组的 `float` 数
 
 ``` php
 <?php
@@ -128,7 +123,7 @@ $integers = array_map('intval', $floats);
 <?php
 $raw = [1,2,3,4,5,];
 array_reduce($raw, function($result, $value) {
-    return $result += $value;
+  return $result += $value;
 })
 // 15
 ```
@@ -141,7 +136,7 @@ $raw = [1,2,3,4,5,];
 
 $sum = 0;
 foreach($raw as $value) {
-    $sum += $value;
+  $sum += $value;
 }
 $sum;
 // 15
@@ -155,9 +150,9 @@ $sum;
 $raw = [1,2,3,4,5,];
 
 array_reduce($raw, function($result, $value) {
-    $result[$value] = $value;
+  $result[$value] = $value;
 
-    return $result;
+  return $result;
 }, []);
 // [1 => 1, 2 => 2, ... 5 => 5]
 ```
@@ -187,7 +182,7 @@ array_filter($test);
 $test [1,2,3,4,5];
 
 array_filter($test, function($content) {
-    return $content > 3;
+  return $content > 3;
 });
 
 // [4,5];

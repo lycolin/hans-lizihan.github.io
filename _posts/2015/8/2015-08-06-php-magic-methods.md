@@ -42,17 +42,17 @@ php 的一大特色应该就是以两个 `__` 开头的魔术方法了。
 ``` php
 <?php 
 class Foo {
-    pubilc $name;
-    pubilc $foo;
-    public function __construct($name) {
-        $this->name = name;
-    }
-    public function setLink(Foo $foo) {
-        $this->foo = $foo;
-    }
-    public function __destruct() {
-      echo 'destructing';
-    }
+  pubilc $name;
+  pubilc $foo;
+  public function __construct($name) {
+    $this->name = name;
+  }
+  public function setLink(Foo $foo) {
+    $this->foo = $foo;
+  }
+  public function __destruct() {
+    echo 'destructing';
+  }
 }
 
 $foo1 = new Foo('Foo 1');
@@ -94,15 +94,14 @@ $foo2 = null;
  * @param  array   $parameters
  * @return mixed
  */
-public function __call($method, $parameters)
-{
-    if (in_array($method, ['increment', 'decrement'])) {
-        return call_user_func_array([$this, $method], $parameters);
-    }
+public function __call($method, $parameters) {
+  if (in_array($method, ['increment', 'decrement'])) {
+    return call_user_func_array([$this, $method], $parameters);
+  }
 
-    $query = $this->newQuery();
+  $query = $this->newQuery();
 
-    return call_user_func_array([$query, $method], $parameters);
+  return call_user_func_array([$query, $method], $parameters);
 }
 
 /**
@@ -112,11 +111,10 @@ public function __call($method, $parameters)
  * @param  array   $parameters
  * @return mixed
  */
-public static function __callStatic($method, $parameters)
-{
-    $instance = new static;
+public static function __callStatic($method, $parameters) {
+  $instance = new static;
 
-    return call_user_func_array([$instance, $method], $parameters);
+  return call_user_func_array([$instance, $method], $parameters);
 }
 ?>
 ```
@@ -210,9 +208,9 @@ $cloned = clone $instance;
 ``` php
 <?php
 class Test {
-    public function __construct($name = 'hans') {
-        $this->name = $name;
-    }
+  public function __construct($name = 'hans') {
+    $this->name = $name;
+  }
 }
 
 $test = new Test;
@@ -233,12 +231,12 @@ echo serialize($test);
 ``` php
 <?php
 class Test {
-    public function __construct($name = 'hans') {
-        $this->name = $name;
-    }
-    public function __sleep() {
-      return [];
-    }
+  public function __construct($name = 'hans') {
+    $this->name = $name;
+  }
+  public function __sleep() {
+    return [];
+  }
 }
 
 $test = new Test;
@@ -263,8 +261,7 @@ __awake 简单讲就是重新构造的时候的一个钩子
  *
  * @return void
  */
-public function __wakeup()
-{
+public function __wakeup() {
     $this->bootIfNotBooted();
 }
 ?>

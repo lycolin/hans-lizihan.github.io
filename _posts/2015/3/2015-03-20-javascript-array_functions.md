@@ -20,9 +20,9 @@ categories: javascript
 
 ``` javascript
 Array.prototype.forEach = function(callback) {
-    for(var i = 0; i < this.length; i ++) {
-        callback(this[i]);
-    }
+  for(var i = 0; i < this.length; i ++) {
+    callback(this[i]);
+  }
 };
 ```
 
@@ -32,7 +32,7 @@ Array.prototype.forEach = function(callback) {
 var test = [1,2,3,4,5];
 
 test.forEach(function(value) {
-    console.log(value);
+  console.log(value);
 });
 // 1 2 3 4 5
 ```
@@ -47,7 +47,7 @@ Array.prototype.map = function(projection) {
 
   // **this** refers to the Array
   this.forEach(function(item) {
-      result.push(projection(item));
+    result.push(projection(item));
   });
 
   return result;
@@ -70,15 +70,15 @@ console.log(squares.map(Math.sqrt))
 
 ``` javascript
 Array.prototype.filter = function(predicate) {
-    var result = [];
+  var result = [];
 
-    this.forEach(function(item) {
-        if(predicate(item)) {
-            result.push(item);
-        }
-    })
+  this.forEach(function(item) {
+    if(predicate(item)) {
+      result.push(item);
+    }
+  })
 
-    return result;
+  return result;
 }
 ```
 
@@ -86,7 +86,7 @@ Array.prototype.filter = function(predicate) {
 
 ``` javascript
 var result = [1,3,4,5,6,6].filter(function(value) {
-    return value > 5;
+  return value > 5;
 });
 
 console.log(result);
@@ -102,18 +102,18 @@ console.log(result);
 
 ``` javascript
 Array.prototype.reduce = function (callback, initial) {
-    var i = 0;
-    if(arguments.length !== 2) {
-        initial = this[0];
-    } else {
-        i --;
-    }
+  var i = 0;
+  if(arguments.length !== 2) {
+    initial = this[0];
+  } else {
+    i --;
+  }
 
-    for(; i < this.length - 1; i ++) {
-        initial = callback(initial, this[i+1]);
-    }
+  for(; i < this.length - 1; i ++) {
+    initial = callback(initial, this[i+1]);
+  }
 
-    return initial;
+  return initial;
 }
 ```
 
@@ -124,7 +124,7 @@ javascript  中 reduce 使用和 php 十分相像 一般的用法是这样的
 ``` javascript
 var test = [1,2,3,4];
 var sum = test.reduce(function(pre, cur) {
-    return pre += cur;
+  return pre += cur;
 });
 
 console.log(sum); //10
@@ -135,7 +135,7 @@ console.log(sum); //10
 ``` javascript
 var test = [1,2,3,4];
 var sumInitial10 = test.reduce(function(pre, cur) {
-    return pre += cur;
+  return pre += cur;
 }, 10);
 
 console.log(sumInitial10); // 20
@@ -143,7 +143,7 @@ console.log(sumInitial10); // 20
 
 # `sort`
 
-`sort` 的实现比较复杂，而且据说不同的厂商还有不同的实现，不同的 array 也有不同的待遇，比如说 纯数字 array 是用 C++的 `qsort` 实现的， 而带有字符串的 array 是通过 `merge-sort` 实现的
+`sort` 的实现比较复杂，而且据说不同的厂商还有不同的实现，不同的 array 也有不同的待遇，比如说 纯数字 array 是用 C++ 的 `qsort` 实现的， 而带有字符串的 array 是通过 `merge-sort` 实现的
 
 所以今天对于这个函数，实现方法就不写了，直接写用法吧。 另外， `sort()` 这个函数也不像其它那些函数直来直去，光用法就要看好久
 
@@ -168,7 +168,7 @@ console.log(test.sort());
 ``` javascript
 var test = [1,10,3,4];
 console.log(test.sort(function(a, b) {
-    return a - b;
+  return a - b;
 }));
 // 1 3 4 10
 ```
@@ -179,14 +179,14 @@ console.log(test.sort(function(a, b) {
 
 ``` javascript
 function compare(a, b) {
-    if (a is less than b by some ordering criterion) {
-        return -1;
-    }
-    if (a is greater than b by the ordering criterion) {
-        return 1;
-    }
-    // a must be equal to b
-    return 0;
+  if (a is less than b by some ordering criterion) {
+    return -1;
+  }
+  if (a is greater than b by the ordering criterion) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
 }
 ```
 
@@ -195,15 +195,15 @@ function compare(a, b) {
 ``` javascript
 var test = ['ab', 'ac', 'bd', 'bc'];
 test.sort(function(a, b) {
-    if(a < b) {
-        return -1;
-    }
+  if (a < b) {
+    return -1;
+  }
 
-    if(a > b) {
-        return 1;
-    }
+  if (a > b) {
+    return 1;
+  }
 
-    return 0;
+  return 0;
 });
 
 console.log(test);
