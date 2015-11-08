@@ -85,7 +85,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2 // urn
 1. URL 都是 uri
 2. URI 还包括了 URN
 3. URN 是资源的名字，命民空间用 `:` 隔开
-4. URN 不足以然我们找到这个资源
+4. URN 不足以让我们找到这个资源
 5. URL 是可以让我们去某一个地方找到某一条资源的地址
 
 参考: 

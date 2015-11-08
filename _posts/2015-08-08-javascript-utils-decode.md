@@ -29,7 +29,7 @@ e.g. `data:image/gif;base64,R0lGODlhyAAiALM...DfD0QAADs=`
 
 这个函数是 html5 中的 `recommendation` 并且在 5.1 中变成了 `living standard`
 
-signiture 简单到爆了 知识简单的将 ascii 转码成为二进制而已
+signiture 简单到爆了 只是简单地将 ascii 转码成为二进制而已
 
 ``` javascript
 var decodedData = window.atob(encodedData);
@@ -63,11 +63,11 @@ var decodedData = window.atob(encodedData);
 
 `blob` (binary large object)
 
-这个东西说白了就是个黑盒子。里面是个二进制的东西，坑是音频也可能是视频
+这个东西说白了就是个黑盒子。里面是个二进制的东西，可能是音频也可能是视频
 
 BlobBuilder 已经被废除了，出于兼容性考虑下面代码还是做了一些让步 [BlobBuilder Obsolete](https://developer.mozilla.org/en-US/docs/Web/API/BlobBuilder)
 
-看起来这个 `BlobBuilder` 被新的 `Blog` constructor 给替代了
+看起来这个 `BlobBuilder` 被新的 `Blob` constructor 给替代了
 
 三个方法
 
@@ -121,9 +121,9 @@ $.dataURLtoBlob = function(data) {
 Image(width, height);
 ```
 
-期中有一个非常模糊地属性 `img.crossOrigin`。这个是啥意思？
+其中有一个非常模糊的属性 `img.crossOrigin`。这个是啥意思？
 
-是这样的，浏览器实现的静态的 `<img>` 标签可以自由的直接从其他域里面拽东西下来。(其实就是一个 ger request) 这时候浏览器是不会做出CORS的警告的。
+是这样的，浏览器实现的静态的 `<img>` 标签可以自由的直接从其他域里面拽东西下来。(其实就是一个 get request) 这时候浏览器是不会做出CORS的警告的。
 
 如果说用程序做出来一个 `Image` 就不一样了。这种时候就要告诉浏览器你需要怎么做
 

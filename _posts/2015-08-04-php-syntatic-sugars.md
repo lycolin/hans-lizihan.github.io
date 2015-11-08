@@ -6,7 +6,7 @@ summary:    php 基础之 新版本语法糖
 categories: php
 ---
 
-php 5.6 成为当前稳定版本很久了，随着新版本发布，很多语法糖也随之面世，之前非常繁琐的php操作现在可能都有了更高的语法糖做替代。
+php 5.6 成为当前稳定版本很久了，随着新版本发布，很多语法糖也随之面世，之前非常繁琐的php操作现在可能都有了更好的语法糖做替代。
 
 ## ::class
 
@@ -28,15 +28,14 @@ Post::class; // => 'App\Post'
 
 ## .. (splat)
 
-这个是从 ruby 借鉴过来的。虽然没有 ruby 支持的那么好(任何地方1..5 => range(1,5)) 但是在 function里面还是很有用的，很多 function 都是从 `func_get_args` 中解放出来了。
+这个是从 ruby 借鉴过来的。虽然没有 ruby 支持的那么好(任何地方1..5 => range(1,5)) 但是在 function里面还是很有用的，很多 function 都从 `func_get_args` 中被解放出来了。
 
 ``` php
 <?php 
 // old:
-function test($param1, $param2 = null, $param3 = null) 
-{
-    $params = func_get_args();
-    var_dump($params);
+function test($param1, $param2 = null, $param3 = null) {
+  $params = func_get_args();
+  var_dump($params);
 }
 
 test(1,2,3); // prints [1,2,3]
@@ -44,9 +43,8 @@ test(1,2); // prints [1,2]
 test(1); // prints [1]
 
 // new:
-function test($param1, ...$rest)
-{
-    var_dump($rest);
+function test($param1, ...$rest) {
+  var_dump($rest);
 }
 
 test(1,2,3); // $rest = [2,3];
@@ -58,9 +56,8 @@ test(1,2,3); // $rest = [2,3];
 ``` php
 <?php 
 $rest = [1,2,3,4];
-function add($param1, $param2, $param3, $param4)
-{
-    return $param1 + $param2 + $param3 + $param4;
+function add($param1, $param2, $param3, $param4) {
+  return $param1 + $param2 + $param3 + $param4;
 }
 
 add(...$rest); // 10

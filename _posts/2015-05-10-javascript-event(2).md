@@ -176,7 +176,7 @@ window.onbeforeunload = function(event) {
 
 ### DOMContentLoaded
 
-这个事件是 h5中新加入的一个loading事件。 之前说过 `window.onload` 的弊端：等所有资源全部加载完毕之后才会被触发，包括图片。 所以应该有一个更好的加载时间在所有的文档字符串被加载完毕之后就立刻执行。 所有有了这个事件。
+这个事件是 h5中新加入的一个loading事件。 之前说过 `window.onload` 的弊端：等所有资源全部加载完毕之后才会被触发，包括图片。 所以应该有一个更好的加载时间在所有的文档字符串被加载完毕之后就立刻执行。 所以有了这个事件。
 
 其实 `jQuery` 中的 `$(function() {})` 也就是 `$(document).ready(function(){})` 就是用的这个原理
 
