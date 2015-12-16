@@ -76,4 +76,21 @@ $(function() {
     $(this).add(sidebar).toggleClass('open');
   });
 
+
+  var $searchInput = $('#search-input');
+  // searching function
+  $searchInput.keyup(function() {
+    var text = $searchInput.val().toLowerCase();
+    var $tocLink = $('.toc-link');
+    if (!text) return $('.toc-link').show();
+
+    $tocLink.hide();
+    $tocLink.each(function() {
+      var $this = $(this);
+      var htmlstr = $this.html().toLowerCase();
+      if (htmlstr.indexOf(text) !== -1) {
+        $this.show();
+      }
+    });
+  })
 });
