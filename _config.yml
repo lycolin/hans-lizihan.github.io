@@ -22,13 +22,12 @@ google_analytics: UA-54903520-2
 # Comment
 disqus_shortname: hanslizihancom
 
-highlighter: pygments
-
 # Build settings
-markdown: redcarpet
-redcarpet:
-  input: GFM
-  extensions: ["tables", "strikethrough"]
+markdown: kramdown
+kramdown:
+ input: GFM
+highlighter: rouge
+
 sass:
   style: compressed
 gems:
