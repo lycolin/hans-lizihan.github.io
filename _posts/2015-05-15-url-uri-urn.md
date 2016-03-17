@@ -14,13 +14,13 @@ categories: Web-Basic
 
 ## 1 经典分类 (Classic View)
 
-> During the early years of discussion of web identifiers (early to mid 90s), people assumed that an identifer type would be cast into one of two (or possibly more) classes. An identifier might specify the location of a resource (a URL) or its name (a URN) independent of location. Thus a URI was either a URL or a URN. There was discussion about generalizing this by addition of a discrete number of additional classes; for example, a URI might point to metadata rather than the resource itself, in which case the URI would be a URC (citation). URI space was thus viewed as partitioned into subspaces: URL and URN, and additional subspaces, to be defined. The only such additional space ever proposed was URC and there never was any buy-in; so without loss of generality it's reasonable to say that URI space was thought to be partitioned into two classes: URL and URN. Thus for example, "http:" was a URL scheme, and "isbn:" would (someday) be a URN scheme. Any new scheme would be cast into one or the other of these two classes.
+> During the early years of discussion of web identifiers (early to mid 90s), people assumed that an identifier type would be cast into one of two (or possibly more) classes. An identifier might specify the location of a resource (a URL) or its name (a URN) independent of location. Thus a URI was either a URL or a URN. There was discussion about generalizing this by addition of a discrete number of additional classes; for example, a URI might point to metadata rather than the resource itself, in which case the URI would be a URC (citation). URI space was thus viewed as partitioned into subspaces: URL and URN, and additional subspaces, to be defined. The only such additional space ever proposed was URC and there never was any buy-in; so without loss of generality it's reasonable to say that URI space was thought to be partitioned into two classes: URL and URN. Thus for example, "http:" was a URL scheme, and "isbn:" would (someday) be a URN scheme. Any new scheme would be cast into one or the other of these two classes.
 
 上面是 W3C 原文 是最最开始的时候提出这三个概念的时候的初衷 在那个 协议没有这么多的年代，人们曾经想过将 URI 分成两个大类： URL 和 URN
 
-举个栗子，当时他们曾经提出过 
+举个栗子，当时他们曾经提出过
 
-* `http:` 开头的 uri (表示某个资源在某个地址中) 就应该是 URL 
+* `http:` 开头的 uri (表示某个资源在某个地址中) 就应该是 URL
 * `isbn:` 开头的 uri （表示某个资源的名称) 就应给被归类为 URN
 
 只不过这样的定义会印出来一些问题，那就是这两个大类不够用了：所以曾经想要引用出来 URC （Citation）这种 uri 分类。
@@ -35,7 +35,7 @@ categories: Web-Basic
 
 很长的一段引用 不过大概的意思是这样的： 就是说这个世界上按照常理来说只应该存在两种东西： URI 和 URN，URL是一个对于 `http` 作为 URI scheme 的 URI 的非正式简称
 
-对于 URN 来说 `urn:` 作为一个 uri scheme 之后可以对于这个 scheme 做一个 子命名空间的声明 `urn:isbn:nn-nnnn-nn` 就是一个例子。 这条 uri 中 isbn 不作为一个 URI scheme 出现，而是作为了一个 `urn:` shceme 下的 namespace identifyer。 
+对于 URN 来说 `urn:` 作为一个 uri scheme 之后可以对于这个 scheme 做一个 子命名空间的声明 `urn:isbn:nn-nnnn-nn` 就是一个例子。 这条 uri 中 isbn 不作为一个 URI scheme 出现，而是作为了一个 `urn:` scheme 下的 namespace identifier。
 
 总结一下就是现在的看法就是不把 uri 严格分类成 location 或者 name，而是统一地将他们看成是 URI
 
@@ -68,9 +68,9 @@ urn:<NID>:<NSS>
 ```
 
 nid: namespace identifier
-nss: namespace specific stirng
+nss: namespace specific string
 
-也就是说一般的 URN 是不包括 query string 和 fragement 和这两个东西的
+也就是说一般的 URN 是不包括 query string 和 fragment 和这两个东西的
 
 而对于 `authority` 这个属性，对于 url 来说它一般代表一个域名，对于 urn 来说它代表一系列的 namespace identifier 并且用 `:` 隔开
 
@@ -88,7 +88,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2 // urn
 4. URN 不足以让我们找到这个资源
 5. URL 是可以让我们去某一个地方找到某一条资源的地址
 
-参考: 
+参考:
 
 * [W3C-uri-clarification](http://www.w3.org/TR/uri-clarification/)
 * [RFC3986](http://tools.ietf.org/html/rfc3986)

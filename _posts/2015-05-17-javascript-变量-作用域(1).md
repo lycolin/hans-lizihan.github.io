@@ -85,7 +85,7 @@ function test(args) {
   args.attribute = 'hoho';
 }
 
-test(obj); 
+test(obj);
 console.log(obj.attribute); //hoho
 ```
 
@@ -110,7 +110,7 @@ console.log(obj.attribute); // hoho
 
 ## 作用域
 
-我们知道，js 中 __唯一__ 形成作用域的元素就是 `funciton`， 对于 `{}` 包裹的元素来说，按照正常的 cpp 和 java 的理解都是自己形成一个作用域的，然而在 js 中这些规则都不适用。 
+我们知道，js 中 __唯一__ 形成作用域的元素就是 `funciton`， 对于 `{}` 包裹的元素来说，按照正常的 cpp 和 java 的理解都是自己形成一个作用域的，然而在 js 中这些规则都不适用。
 
 真正从底层去探寻 javascript 的作用域实现机理这个事儿就深了。
 
@@ -118,15 +118,15 @@ console.log(obj.attribute); // hoho
 
 1. Variable Object 变量对象 (VO)
 2. Active Object 活动对象 (AO)
-3. Excecution Context 执行环境 (EC)
-4. Excecution Context Stack 执行环境栈 (ECS)
+3. Execution Context 执行环境 (EC)
+4. Execution Context Stack 执行环境栈 (ECS)
 5. scope chain 作用域链  
 
 ### VO
 
 > 如果变量与执行环境相关，那么变量知道自己应该储存在哪里，并且知道该如何访问，这种机制叫做变量对象(variable object)
 
-很抽象。具体点来说就是我们声明出来的 
+很抽象。具体点来说就是我们声明出来的
 
 1. 变量声明 (var a = 'foo')
 2. 函数声明 (function foo (){})
@@ -148,15 +148,15 @@ activeExecutionContext = {
 
 ``` javascript
 var a = 10;
- 
+
 function test(x) {
   var b = 20;
 };
- 
+
 test(30);
 ```
 
-这段代码的背后其实发生了这样的故事: 
+这段代码的背后其实发生了这样的故事:
 
 ```
 // 全局环境的变量对象
@@ -164,7 +164,7 @@ VO(globalContext) = {
   a: 10,
   test: <reference to function>
 };
- 
+
 // test函数环境的变量对象
 VO(test functionContext) = {
   x: 30,
@@ -216,7 +216,7 @@ VO(globalContext) === global
 
 1. 函数的形参（当进入函数执行环境时） —— 变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值;对于没有传递的参数，其值为undefined
 2. 函数的声明(Function declaration(FD)) —— 变量对象的一个属性，其属性名和值都是函数对象创建出来的;如果变量对象已经包含了相同名字的属性，则替换它的值
-3. 变量声明（var，VariableDeclaration） —— 变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。 
+3. 变量声明（var，VariableDeclaration） —— 变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。
 
 然后才会真正去执行函数中的逻辑。
 
@@ -241,7 +241,7 @@ a(); // heihei
 2. 又看到了 VD 但是 FD 已经有了 `a` 所以跳过
 3. 真正进入逻辑部分，将 alert('heihei') 的函数赋值给了 `a`,覆盖掉了前面的 `a` 的声明
 
-所以早前提到的一个概念 
+所以早前提到的一个概念
 
 > 当函数执行有命名冲突的时候，函数依次填入 变量 => 函数 => 参数
 
@@ -329,9 +329,9 @@ EC = {
 
 ### ECS
 
-为什么能形成局部变量？ ECS就是解释。 
+为什么能形成局部变量？ ECS就是解释。
 
-因为在 javascript 中，__只有函数执行才会形成一个 Excecution Context__ 所以 AO 也只能在 EC 中才会存活。
+因为在 javascript 中，__只有函数执行才会形成一个 Execution Context__ 所以 AO 也只能在 EC 中才会存活。
 
 js 对于 EC 的执行是基于 stack 的。刚开始的时候 stack 中只有一个 globalContext 的存在。 当执行各种函数的时候，js 就会将这个函数的EC push 进 stack 里面。所以当前的 Context 就是这个函数的 Context 了。
 
@@ -412,7 +412,7 @@ f2.Scope = [
 
 至于作用域更加具体的各种坑留给后面的笔记再写了。
 
-参考: 
+参考:
 
 * [javascript 执行环境，变量对象，作用域链](http://segmentfault.com/a/1190000000533094)
 * [汤姆大叔的博客](http://www.cnblogs.com/tomxu/archive/2012/01/16/2309728.html)

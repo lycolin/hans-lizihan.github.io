@@ -3,7 +3,7 @@ layout:     post
 title:      php 数组高级函数
 date:       2015-03-16 19:28
 summary:    php 高级函数
-categories: PHP
+categories: php
 ---
 
 > 数组高级函数

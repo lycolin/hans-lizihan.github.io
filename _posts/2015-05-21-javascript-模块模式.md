@@ -6,7 +6,7 @@ summary:    javascript 设计模式 模块模式
 categories: javascript
 ---
 
-这两天在看 coffeescript 的时候看到 coffee 里面的 `class` 实现编译出来之后是这样的:
+这两天在看 coffee-script 的时候看到 coffee 里面的 `class` 实现编译出来之后是这样的:
 
 ``` javascript
 Person = (function() {
@@ -29,7 +29,7 @@ Person = (function() {
 
 我们看到 `constructor` 被放在了一个 iife 里面，所以在 iife 里面我们就可以定义一个 `constructor` 然后各种操作之后返回这个函数的引用了。
 
-感觉这个用法之前再用 angularjs 的时候 `factory` 一直在用。这种模式的好处就是可以有选择地暴露一些想要暴露的公共方法给外面，然后封装一些私有方法在里面。
+感觉这个用法之前再用 `angular.js` 的时候 `factory` 一直在用。这种模式的好处就是可以有选择地暴露一些想要暴露的公共方法给外面，然后封装一些私有方法在里面。
 
 除此之外这种模式还有一个非常酷炫的特性就是可以将全局变量 Pass 进去。并且自己规定它的 alias
 

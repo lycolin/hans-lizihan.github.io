@@ -14,7 +14,7 @@ js是底层就是面向对象的语言。但是相比较传统的 OO 语言，js
 
 ### 特性
 
-> 特性是为了实现 javascript 内部属性的。 javascript 不能直接访问它们。 用两个中括号表示 e.g. [[Enumberable]]
+> 特性是为了实现 javascript 内部属性的。 javascript 不能直接访问它们。 用两个中括号表示 e.g. [[Enumerable]]
 
 回到对象的属性。对象的属性有两种
 
@@ -25,7 +25,7 @@ js是底层就是面向对象的语言。但是相比较传统的 OO 语言，js
 
 数据属性有4个特性决定它的表现
 
-1. [[Enumberable]] 是否可以通过 for-in 遍历到 对于直接定义出来的属性 默认为 `true`
+1. [[Enumerable]] 是否可以通过 for-in 遍历到 对于直接定义出来的属性 默认为 `true`
 2. [[Configurable]] 能否通过 `delete` 删除属性， 能否修改属性的特性，能否把属性修改为 `accessor`。对于直接定义的属性默认为 `true`
 3. [[Writable]] 能否修改属性的值。 直接定义出来的属性该值默认为 `true`
 4. [[Value]] 可以是 primitive 也可以是 reference 的地址。我们方位该值的时候就是根据这个特性出来的。该值的默认值为 `undefined`
@@ -34,7 +34,7 @@ js是底层就是面向对象的语言。但是相比较传统的 OO 语言，js
 
 访问器属性也有4个特性规范它的表现
 
-1. [[Enumberable]] 是否可以通过 for-in 遍历到 对于直接定义出来的属性 默认为 `true`
+1. [[Enumerable]] 是否可以通过 for-in 遍历到 对于直接定义出来的属性 默认为 `true`
 2. [[Configurable]] 能否通过 `delete` 删除属性， 能否修改属性的特性，能否把属性修改为 `数据属性`。对于直接定义的属性默认为 `true`
 3. [[Get]] 访问函数，默认为 `undefined`
 4. [[Set]] 写入函数，默认为 `undefined`
@@ -85,9 +85,9 @@ Object.defineProperty(person, 'full_name', {
     return this.first_name + ' ' + this.last_name;
   },
   set: function(full_name) {
-    var splited = full_name.split(' ');
-    this.first_name = splited[0];
-    this.last_name = splited[1];
+    var splitted = full_name.split(' ');
+    this.first_name = splitted[0];
+    this.last_name = splitted[1];
   }
 });
 
@@ -125,9 +125,9 @@ Object.defineProperties(person, {
       return this.first_name + ' ' + this.last_name;
     },
     set: function() {
-      var splited = full_name.split(' ');
-      this.first_name = splited[0];
-      this.last_name = splited[1];
+      var splitted = full_name.split(' ');
+      this.first_name = splitted[0];
+      this.last_name = splitted[1];
     }
   }
 });
@@ -135,7 +135,7 @@ Object.defineProperties(person, {
 
 这里注意的是，当 特性 `configurable` 被设置成 false 之后就不可更改了。有点像 `finally` 的感觉。所以这样设置属性的时候要谨慎。因为一次性的没有回头路了。
 
-此外，使用 `Object.defineProperty` 的时候如果不指定，则 `configurable`, `writable`, `enumberable` 默认都是 `false`
+此外，使用 `Object.defineProperty` 的时候如果不指定，则 `configurable`, `writable`, `enumerable` 默认都是 `false`
 
 #### Object.getOwnPropertyDescription()
 
@@ -149,8 +149,8 @@ Object.defineProperty(person, 'name', {
 });
 
 var attributes = Object.getOwnPropertyDescription(person, name);
-console.log(attributes.configurable, attributes.value, attributes.enumberable, attributes.writable);
-// false, 'hans', false, fasle
+console.log(attributes.configurable, attributes.value, attributes.enumerable, attributes.writable);
+// false, 'hans', false, false
 ```
 
 参考:

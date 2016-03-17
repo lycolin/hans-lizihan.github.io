@@ -78,7 +78,7 @@ function Person(name, age, job) {
 在 javascript 中, `new` 关键字的工作分为下面几个步骤。
 
 1. 创建一个新的对象并将自己的应用赋值给(`var obj = Object.create(self.prototype)`)
-2. 将构造函数的作用域给新的对象(所以 this.name 是对象的属性) -> (`this` *-> `obj`)
+2. 将构造函数的作用域给新的对象(所以 this.name 是对象的属性) -> (`this` \*-> `obj`)
 3. 执行构造函数的代码
 4. 返回新的对象。(`return obj`)
 
@@ -140,7 +140,7 @@ console.log(person1.constructor === Person); // true
 ``` javascript
 String('hihi'); // hihi
 
-new String('hihi') 
+new String('hihi')
 // String {0: "h", 1: "i", 2: "h", 3: "i", length: 4, [[PrimitiveValue]]: "hihi"}
 ```
 
@@ -249,7 +249,7 @@ console.log(person1.sayHi === person2.sayHi); // true
 
 对于原型有两个常用的函数来确定 prototype 是谁的 prototype
 
-### *.prototype.isPrototypeOf()
+### \*.prototype.isPrototypeOf()
 
 这个函数可以在任何对象上面 call 出来。本质上来讲它会调查参数中的 [[prototype]] 是不是当前的对象的指针。
 
@@ -274,7 +274,7 @@ console.log(Object.getPrototypeOf(person1) === Person.prototype); // true
 
 ``` javascript
 function Person () {
-  
+
 }
 
 Person.prototype.name = 'Hans';
@@ -286,11 +286,11 @@ console.log(person1.name); // Lee
 console.log(person2.name); // Hans
 ```
 
-### hasOwnProperty() 
+### hasOwnProperty()
 
 这个方法可以简单查询到某一个属性是否是实例自身的属性。这个简单的方法就可以过滤到 n 多个 prototype 中我们像隐藏的属性，在 for-in loop 里面尤其常用。
 
-此外值得注意的是前面看到过属性的 [[enumberable]] 特性。默认自己注册的属性都是 true 也就是可枚举。在 for-in loop里面默认会便利出来所有可枚举的属性。所以在用 for-in 的时候通常加上 hasOwnProperty 做一个filter以防便利时不慎将原型中的方法或者属性都拿了出来。
+此外值得注意的是前面看到过属性的 [[enumerable]] 特性。默认自己注册的属性都是 true 也就是可枚举。在 for-in loop里面默认会便利出来所有可枚举的属性。所以在用 for-in 的时候通常加上 hasOwnProperty 做一个filter以防便利时不慎将原型中的方法或者属性都拿了出来。
 
 ``` javascript
 for(property in object) {
@@ -315,7 +315,7 @@ function hasPrototypeProperty(object, name) {
 这个方法会返回一个数组，里面装满了可枚举的属性 key
 
 ``` javascript
-console.log(Object.keys(Person.prototype)); 
+console.log(Object.keys(Person.prototype));
 // ['name', 'job', 'age', 'sayHi']
 ```
 
@@ -324,7 +324,7 @@ console.log(Object.keys(Person.prototype));
 同时取得所有属性的 key，无论该key是否可枚举
 
 ``` javascript
-Object.getOwnPropertyNames(Person.prototype); 
+Object.getOwnPropertyNames(Person.prototype);
 // ['constructor', 'name', 'age', 'job', 'sayHi']
 ```
 
@@ -336,7 +336,7 @@ Object.getOwnPropertyNames(Person.prototype);
 
 ``` javascript
 function Person() {
-  
+
 }
 Person.prototype = {
   name : 'Hans',
@@ -353,7 +353,7 @@ console.log(person1.constructor === Object); //true
 
 ``` javascript
 function Person() {
-  
+
 }
 Person.prototype = {
   name: 'Hans',
@@ -361,12 +361,12 @@ Person.prototype = {
   age: 22
 };
 Object.defineProperty(Person.prototype, 'constructor', {
-  enumberable: false,
+  enumerable: false,
   value: Person
 };
 ```
 
-注意这里用了 `defineProperty` 是因为默认设置 constructor 会导致 enumberable 为 true 这样每次 for-in 就悲剧了。
+注意这里用了 `defineProperty` 是因为默认设置 constructor 会导致 enumerable 为 true 这样每次 for-in 就悲剧了。
 
 ### 动态原型
 
@@ -444,8 +444,8 @@ Person.prototype = {
 };
 var person1 = new Person();
 var person2 = new Person();
-person1.hobbiles.push('lol');
-console.log(person2.hobbies); 
+person1.hobbies.push('lol');
+console.log(person2.hobbies);
 // ['dota', 'javascript', 'lol']
 ```
 
@@ -489,7 +489,7 @@ function Person(name, age, job) {
   this.age = age;
   this.job = job;
   if(typeof this.sayHi !== 'function') {
-    Person.prototype.sayHi = fucntion() {
+    Person.prototype.sayHi = function() {
       console.log('hihi');
     }
   }
@@ -505,7 +505,7 @@ function Person(name, age, job) {
   var o = new Object();
   o.name = name;
   o.age = age;
-  o.job = job; 
+  o.job = job;
   o.sayHi = function() {
     console.log('hihi');
   }
@@ -533,7 +533,7 @@ console.log(person1 instanceof Object); //true
 ``` javascript
 function Person(name, age, job) {
   var o = new Object();
-  // private proerties goes here
+  // private properties goes here
 
   o.sayHi = function() {
     console.log('hihi' + name);
