@@ -78,10 +78,12 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       margin-bottom: 0
 
   blockquote
+    > p
+      margin: 0
     position: relative
     margin: 0 0 $post-paragraph-spacing 2em
     background-color: rgba(#aaa, 0.3)
-    padding: 1em 0 .1em 1em
+    padding: 1em
     font-style: normal
     &:before
       content: ''
@@ -129,7 +131,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     margin: $post-paragraph-spacing * 2 0
     border: none
     border-top: 1px solid $post-hr-color
-  
+
 
 table
   border-collapse: collapse
@@ -141,11 +143,11 @@ table
 
 table, td, th
   border: 1px solid $code-scrollbar-color
-td
-  padding: 1rem 
+td, th
+  padding: 1rem
 th
-  padding: 7px 5px
-  
+  background: darken($post-bg, 1%)
+   
 // post share
 .post-share
   margin: 2em 0

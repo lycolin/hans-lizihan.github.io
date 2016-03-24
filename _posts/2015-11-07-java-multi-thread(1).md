@@ -6,7 +6,7 @@ summary:    java 多线程基础
 categories: java
 ---
 
-java 中多线程的能力让给人又爱又恨。相比较 `Node.js` 里面开心的 eventloop，java 的 thread 简直就是灾难。
+java 中多线程的能力让给人又爱又恨。相比较 `Node.js` 里面开心的 event-loop，java 的 thread 简直就是灾难。
 
 先来总结下关键词来享受一下世界的恶意
 
@@ -38,9 +38,9 @@ class HttpRequest extends Thread {
     try {
       sleep(1000); // sleep 是使当前进程持续执行 *** ms
     } catch (InterruptedException e) {
-       System.out.println("The thread is interupted");
+       System.out.println("The thread is interrupted");
     }
-    System.out.println("Reuest finished!");
+    System.out.println("Request finished!");
   }
 }
 class Main {
@@ -64,9 +64,9 @@ class HttpRequest implements Runnable {
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
-      System.out.println("The thread is interupted");
+      System.out.println("The thread is interrupted");
     }
-    System.out.println("Reuest finished!");
+    System.out.println("Request finished!");
   }
 }
 class Main {
@@ -91,7 +91,7 @@ class Main {
   public static void main(String[] args) {
     (new Thread(new HttpRequest())).start();
     for (int i = 0; i < 10000; i++) {
-      System.out.println(i); 
+      System.out.println(i);
     }
   }
 }
@@ -112,7 +112,7 @@ Request finished!
 
 这正好论证了 `Thread` 的 concurrency 的特性。即两个线程中的任务可能同时进行。
 
-## isAlive() 
+## isAlive()
 `isAlive()` 方法探查 thread 的 run method 是否正在执行中
 
 > The JVM considers the thread to be alive immediately prior to the thread's call to run(), during the thread's execution of run(), and immediately after run() returns
@@ -150,7 +150,7 @@ class PiCalculatorThread extends Thread {
 }
 ```
 
-## join() 
+## join()
 
 可以从上面的例子里面看到手动地写 `while(thread.isAlive()) Thread.sleep(time)` 这样的用例太多了。所以 jdk 直接提供了了这样的工具。
 
@@ -158,7 +158,7 @@ class PiCalculatorThread extends Thread {
 try {
   piCalculatorThread.join(10);
 } catch(InterruptedException e) {
-  System.err.println("I am interupted");
+  System.err.println("I am interrupted");
 }
 System.out.println ("pi = " + piCalculatorThread.pi);
 ```
@@ -168,12 +168,12 @@ System.out.println ("pi = " + piCalculatorThread.pi);
 ### daemon
 简单讲就是 thread 分两种。第一种是 `user thread`, 第二种是 `daemon thread`。 举例来说 java runtime 中的 `garbage collection` 的 thread 就是一个 `daemon thread`
 
-二者的区别很简单。就是 `user thread` 负责主要的逻辑处理等等， `daemon` 是在背后跑的 主要负责 `house keeping`。 真正的区别是 
+二者的区别很简单。就是 `user thread` 负责主要的逻辑处理等等， `daemon` 是在背后跑的 主要负责 `house keeping`。 真正的区别是
 1. **user thread的终止是程序终止的充分条件**
 2. **daemon thread是无限循环的一个过程，程序可以在daemon thread 仍然活跃的时候被终止**
 
 手工使 thread 成为 `daemon thread` 只需要 `thread.setDaemon(true)` 就行了
 
-参考: 
+参考:
 
 * [java-word-thread-1](http://www.javaworld.com/article/2074217/java-concurrency/java-101--understanding-java-threads--part-1--introducing-threads-and-runnables.html)

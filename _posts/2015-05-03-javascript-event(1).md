@@ -206,7 +206,6 @@ js 中 handler 的第一个参数是 `事件对象`
 
 总体来讲 不同事件有不同的 event 信息，但是有一些是公用的
 
----
 meth/prop        | type             | read/write | 说明                  |
 :--------------- |:---------------- |:---------- |:-------------------- |
 bubbles          | Boolean          | Read Only  | 事件是否冒泡            |
@@ -222,7 +221,6 @@ target           | Element          | Read Only  | 事件的目标             |
 trusted          | Boolean          | Read Only  | true 是浏览器原声的， false 是开发人员自创的|
 type             | String           | Read Only  | 被触发的事件的类型      |
 view             | AbstractView     | Read Only  | 与事件关联的抽象视图，等于发生事件的 window 对象(iframe 相关)|
----
 
 ### this, currentTarget, target 的爱怨情仇
 

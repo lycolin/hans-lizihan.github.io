@@ -6,12 +6,12 @@ summary:    javascript 常用工具 原生 API
 categories: javascript
 ---
 
-这两天写 javascript 的时候经 看到同事引入了一个 `util.js` 
+这两天写 javascript 的时候经 看到同事引入了一个 `util.js`
 看了看源代码很少但是感觉自己看了之后老是一知半解的，所以特此来写下这个小的 工具到底做了些什么。
 
 ## 1 dataUrltoBlob
 
-prerequisite: 
+prerequisite:
 
 这段代码用了很多 html5 中新的 API 所以突然出现了很多不太认识的类和 原生 API 调用(所实话这个有点难) 所以先过一遍这些东西
 
@@ -29,7 +29,7 @@ e.g. `data:image/gif;base64,R0lGODlhyAAiALM...DfD0QAADs=`
 
 这个函数是 html5 中的 `recommendation` 并且在 5.1 中变成了 `living standard`
 
-signiture 简单到爆了 只是简单地将 ascii 转码成为二进制而已
+signature 简单到爆了 只是简单地将 ascii 转码成为二进制而已
 
 ``` javascript
 var decodedData = window.atob(encodedData);
@@ -129,7 +129,7 @@ Image(width, height);
 
 1. 默认：不跨域。如果跨域就会被打回来
 2. 'anonymous'：跨域但是不传 cookie
-3. 'use-credentials': 跨域而且要求服务器必须传回来 `acceess-allow-credentials: true` + cookie
+3. 'use-credentials': 跨域而且要求服务器必须传回来 `access-allow-credentials: true` + cookie
 
 ``` javascript
 $.convertImgToBase64 = function(url, callback, outputFormat) {
@@ -177,7 +177,7 @@ $.fn.serializeObject = function () {
     // => {name: 'checkbox', value: [1,2]}
 
     // !isEmpty(node)
-    // node 应该是一个 checkbox 
+    // node 应该是一个 checkbox
     if ('undefined' !== typeof node && node !== null) {
       // 如果说 node 已经是一个 array 了 那么就 push 进去
       if ($.isArray(node)) {
@@ -201,7 +201,7 @@ $.fn.serializeObject = function () {
 
 ## 4 convertHex
 
-这个应该是着一些里里面最简单的，唯一要知道的 API 就是 
+这个应该是着一些里里面最简单的，唯一要知道的 API 就是
 
 ### parseInt
 
@@ -300,4 +300,3 @@ $.humanFileSize = function(bytes, si) {
   return bytes.toFixed(1) + ' ' + units[u];
 };
 ```
-

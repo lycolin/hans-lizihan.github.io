@@ -27,7 +27,7 @@ php 的一大特色应该就是以两个 `__` 开头的魔术方法了。
 - `__debugInfo`
 
 
-## construct 
+## construct
 
 毫无疑问调用频率最高的魔术方法。该方法在 `new` 关键字创建对象实例的时候被调用。通常包含一些实例的初始化逻辑
 
@@ -37,13 +37,13 @@ php 的一大特色应该就是以两个 `__` 开头的魔术方法了。
 
 > The destructor method will be called as soon as there are no other references to a particular object, or in any order during the shutdown sequence.
 
-这个跟 js 有点类似。就是说如果 
+这个跟 js 有点类似。就是说如果
 
 ``` php
-<?php 
+<?php
 class Foo {
-  pubilc $name;
-  pubilc $foo;
+  public $name;
+  public $foo;
   public function __construct($name) {
     $this->name = name;
   }
@@ -69,7 +69,7 @@ $foo2 = null;
 
 因为 php 的 gc 也是看指向对象的指针来做的。所以看上面的代码，当 foo1 和 foo2 都是 null 的时候我们只是销毁了外层中 foo1 和 foo2 的指针。
 
-然而之前创建的 foo1 中依然保留着 foo2 的实例。 foo2 中也保留着 foo1 的实例。所以这两个指针没有被设为 null 所以 gc 不会回收 foo1 和 foo2 -> __destruct 就不会被销毁。
+然而之前创建的 foo1 中依然保留着 foo2 的实例。 foo2 中也保留着 foo1 的实例。所以这两个指针没有被设为 null 所以 gc 不会回收 foo1 和 foo2 -> `__destruct` 就不会被销毁。
 
 这种时候有一个 很底层的 function `gc_collect_cycles()` 可以解决这个问题，这个函数简单讲就是看下所有不可以被 references 的内存，然后回收掉。
 
@@ -86,7 +86,7 @@ $foo2 = null;
 继续调查发现
 
 ```php
-<?php 
+<?php
 /**
  * Handle dynamic method calls into the model.
  *
@@ -119,7 +119,7 @@ public static function __callStatic($method, $parameters) {
 ?>
 ```
 
-翻译一下 
+翻译一下
 
 1. 用户调用 `Post::find(1)`
 2. php 发现在 `Post` 和 `Model` 类及其父类中并没有 `find` 静态方法
@@ -132,7 +132,7 @@ public static function __callStatic($method, $parameters) {
 
 总之上面的例子很好地说明了 `call` 和 `callStatic` 的实际用途
 
-p.s.1: `call_user_func_array` 
+p.s.1: `call_user_func_array`
  这个方法，这个在 `callable` 里面看过一部分。
 第一个参数 `[array]|[string]` 是方法的名称或者 `instance => method`
 第二个参数  `[array]` 是一个索引数组(不是 assoc array)，作为被叫函数的参数们
@@ -160,9 +160,9 @@ setter 同理
 
 这两个相对少用。
 
-独立于 `get` 和 `set` 
+独立于 `get` 和 `set`
 
-### isset 
+### isset
 
 当外部调用 (isset | empty) 于不可读属性时，可以调用 `__isset` 来截获这个操作并且加入自己的逻辑。
 
@@ -179,7 +179,7 @@ e.g. `isset(Post::find(1)->name)`
 
 当外部有方法调用实例并将实例认为是 `String` 的时候这个函数被调用
 
-`echo Post::find(1)` 
+`echo Post::find(1)`
 
 ## invoke
 
@@ -220,7 +220,7 @@ echo serialize($test);
 ?>
 ```
 
-简单来讲 `serialize` 函数可以将一个 php 数据结构转化为一条 `String` 
+简单来讲 `serialize` 函数可以将一个 php 数据结构转化为一条 `String`
 `unserialize` 函数可以将一个 `serialize` 过的 `String` 转化回 php 数据结构。
 
 可以参照 javascript 的 `JSON.stringify()` 和 `JSON.parse()`
@@ -246,16 +246,16 @@ echo serialize($test);
 ?>
 ```
 
-注意 
+注意
 
-> __sleep() 魔术方法必须返回一个装有所有即将被 serialize 的 **索引数组**
+> \_\_sleep() 魔术方法必须返回一个装有所有即将被 serialize 的 **索引数组**
 
-__awake 简单讲就是重新构造的时候的一个钩子
+`__awake` 简单讲就是重新构造的时候的一个钩子
 
 这个方法不返回任何东西，只是作为一个钩子
 
 ``` php
-<?php 
+<?php
 /**
  * When a model is being unserialized, check if it needs to be booted.
  *
@@ -264,7 +264,6 @@ __awake 简单讲就是重新构造的时候的一个钩子
 public function __wakeup() {
     $this->bootIfNotBooted();
 }
-?>
 ```
 
 举例讲就是这样的。在 unserialize 之后重新构造该类需要的一些东西。

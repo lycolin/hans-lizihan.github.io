@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      java 多线程 (2) - synchronizated
+title:      java 多线程 (2) - synchronized
 date:       2015-11-08 1:07
 summary:    java 多线程基础 - 同步
 categories: java
 ---
 
-## synchronizated
+## synchronized
 
 这是一个关键字 意思就是当前这个方法在执行的时候 jvm 会给当前的类上一个 `object lock`, 所以在执行该方法的时候其他的 `thread` 不可以对于该 object 的任何属性进行更改，知道这个方法执行完毕。
 
@@ -16,17 +16,17 @@ categories: java
 class HttpRequest implements Runnable {
   public static String url;
   public static int size;
-  
+
   public void setUrl(String url) {
     this.url = url;
   }
   @Override
   public void run() {
     System.out.println("Requesting via http...");
-    
+
     transferRequest();
 
-    System.out.println("Reuest finished!");
+    System.out.println("Request finished!");
   }
 
   private void transferRequest() {
@@ -38,16 +38,16 @@ class HttpRequest implements Runnable {
 class Main {
   public static void main(String[] args) {
     HttpRequest imageRequest = new HttpRequest();
-    
+
     imageRequest.setUrl("image1.png");
     Thread image1RequestThread = new Thread(imageRequest);
 
     imageRequest.setUrl("image2.png");
     Thread image2RequestThread = new Thread(imageRequest);
-    
+
     image1RequestThread.start();
     image2RequestThread.start();
-    
+
     try {
       image1RequestThread.join();
       image2RequestThread.join();
@@ -61,7 +61,7 @@ class Main {
 
 最后输出的结果是 `8189` 而不是想象中的 `10000`
 
-### race condition 
+### race condition
 
 简单讲就是 `run` block 中的代码想要更改 `object` 上面的某一个属性。然而我们知道如今的电脑都是多核的，所以就让 concurrency 变得更加 名副其实 了。因为两个 thread 可能 分别在 `cpu1` 和 `cpu2` 上面运行。而当两个 `thread` 同时运行的时候可能有一瞬间，两个 `thread` 都从内存中取得了 `size` 属性为 `500` 于是同时对其 `++`，所以本来`500` 应该在这个过程中变成 `502` 但是由于两个 `thread` 都去读取并且更新了这个属性，导致最后属性的真实值并不统一。
 
@@ -107,17 +107,17 @@ synchronized (Object o) {
 class HttpRequest extends Thread {
   public static String url;
   public static int size;
-  
+
   public HttpRequest(String url) {
     this.url = url;
   }
   @Override
   public void run() {
     System.out.println("Requesting via http...");
-    
+
     transferRequest();
 
-    System.out.println("Reuest finished!");
+    System.out.println("Request finished!");
   }
 
   void transferRequest() {
@@ -144,7 +144,7 @@ class Main {
     HttpRequest image2Request = new HttpRequest("image2");
 
     image1Request.start();
-    image2Request.start(); 
+    image2Request.start();
 
     try {
       image1Request.join();
@@ -161,12 +161,12 @@ class Main {
 Requesting via http...
 Requesting via http...
 image1 6887
-Reuest finished!
+Request finished!
 image2 7614
-Reuest finished!
+Request finished!
 ```
 
-可以看到虽然写了 synchronized 关键字，但是由于 `this` 是一个实例，虽然都在一个代码块中，但是 `this` 缺代表了两个不同的实例。这就是传说中的 `no synchroniztion`
+可以看到虽然写了 synchronized 关键字，但是由于 `this` 是一个实例，虽然都在一个代码块中，但是 `this` 缺代表了两个不同的实例。这就是传说中的 `no synchronization`
 
 解决方案就是 `synchronized (Object o) {}` 中尽量使得 `o` 是两个 thread 共享的实例。
 
@@ -214,6 +214,6 @@ Oracle 官方文档的这例子就很形象， `gaston` 和 `alphonse` 要在 `b
 
 结局方案挺坑爹的。建议的解决方案是写程序之前东小脑好好想想。尤其是一个 `synchronized` method 调用另一个 `synchronized` method 的时候，一定画个图什么的保证两者没有互相的依赖。
 
-参考: 
+参考:
 
 * [java-word-thread-2](http://www.javaworld.com/article/2074318/java-concurrency/java-101--understanding-java-threads--part-2--thread-synchronization.html)
