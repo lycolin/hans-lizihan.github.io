@@ -30,6 +30,7 @@ class ThreadGroupDemo {
 上面这段代码就复原了图中的结构
 
 输出如下
+
 ```
 Active thread groups in main thread group: 2
 java.lang.ThreadGroup[name=main,maxpri=10]
@@ -73,6 +74,6 @@ class Clock {
 ```
  可以把这个想象成 javascript 里面的 `setInterval`
 
-参考: 
+参考:
 
 * [java-word-thread-4](http://www.javaworld.com/article/2074481/java-concurrency/java-101--understanding-java-threads--part-4---thread-groups--volatility--and-threa.html)
