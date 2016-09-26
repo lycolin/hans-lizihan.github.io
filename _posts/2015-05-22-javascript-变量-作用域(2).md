@@ -40,7 +40,7 @@ foo 被 IIFE 包裹，所以直接就运行了。
 ``` javascript
 // 第一次 IIFE 执行
 ECStack = [
-  <foo> functionContext, 
+  <foo> functionContext,
   globalContext
 ];
 
@@ -189,7 +189,7 @@ fooReference {
 所以 this 直接指向了 base 这个属性
 
 ``` javascript
-function foo() {
+var foo = {
   bar: function () {
     return this;
   }
@@ -210,7 +210,7 @@ fooBarReference = {
 但是赋值之后再激活结果又不一样了。
 
 ``` javascript
-function foo() {
+var foo = {
   bar: function() {
     return this;
   }
@@ -237,20 +237,20 @@ e.g.
 function foo() {
   console.log(this);
 }
- 
+
 foo(); // global, because
- 
+
 var fooReference = {
   base: global,
   propertyName: 'foo'
 };
- 
+
 alert(foo === foo.prototype.constructor); // true
- 
+
 // 另外一种形式的调用表达式
- 
+
 foo.prototype.constructor(); // foo.prototype, because
- 
+
 var fooPrototypeConstructorReference = {
   base: foo.prototype,
   propertyName: 'constructor'
@@ -291,7 +291,7 @@ foo.bar(); // reference => foo
 对于第三个例子 `(foo.bar = foo.bar)` 过程是这样的
 
 ```
-(foo.bar = foo.bar) => foo.bar 
+(foo.bar = foo.bar) => foo.bar
 // 注意返回的不是foo.bar 的引用 而是foo.bar 的值
 ```
 
@@ -313,29 +313,29 @@ function foo() {
 
 ``` javascript
 var x = 10;
- 
+
 with ({
- 
+
   foo: function () {
     alert(this.x);
   },
   x: 20
- 
+
 }) {
- 
+
   foo(); // 20
- 
+
 }
- 
+
 // because
- 
+
 var  fooReference = {
   base: __withObject,
   propertyName: 'foo'
 };
 ```
 
-因为在引用中 __withObject 的调用比上一层的AO还要靠前，所以优先在 withObject 里面寻找属性。
+因为在引用中 \_\_withObject 的调用比上一层的AO还要靠前，所以优先在 withObject 里面寻找属性。
 
 ### catch 块
 
@@ -371,7 +371,7 @@ function A() {
   this.x = 10;
 }
 
-var a = new A(); 
+var a = new A();
 console.log(a.x); // 10
 ```
 
@@ -382,6 +382,6 @@ console.log(a.x); // 10
 
 .bind(this), .call(this), .apply(this) 都可以告诉那个函数中的 this 是什么东西.
 
-参考: 
+参考:
 
 * [tom 大叔 this 精讲](http://www.cnblogs.com/TomXu/archive/2012/01/17/2310479.html)

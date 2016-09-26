@@ -31,7 +31,7 @@ Post::class; // => 'App\Post'
 这个是从 ruby 借鉴过来的。虽然没有 ruby 支持的那么好(任何地方1..5 => range(1,5)) 但是在 function里面还是很有用的，很多 function 都从 `func_get_args` 中被解放出来了。
 
 ``` php
-<?php 
+<?php
 // old:
 function test($param1, $param2 = null, $param3 = null) {
   $params = func_get_args();
@@ -54,7 +54,7 @@ test(1,2,3); // $rest = [2,3];
 除此之外还有 unpacking 的简单写法
 
 ``` php
-<?php 
+<?php
 $rest = [1,2,3,4];
 function add($param1, $param2, $param3, $param4) {
   return $param1 + $param2 + $param3 + $param4;
@@ -62,6 +62,7 @@ function add($param1, $param2, $param3, $param4) {
 
 add(...$rest); // 10
 ?>
+```
 
 ## :? (short hand ternary)
 
@@ -77,8 +78,8 @@ $result = $judge ? $judge : 'something else';
 有一个语法糖可以做到相同的事儿
 
 ``` php
-<?php 
-$result = $judge ?: 'somthing else';
+<?php
+$result = $judge ?: 'something else';
 ?>
 ```
 * php [官方手册](http://php.net/manual/)
